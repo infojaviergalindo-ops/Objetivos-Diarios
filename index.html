@@ -78,6 +78,20 @@ textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line)
 .bar .tr{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
 .bar .tr i{display:block;height:100%;background:var(--ink)}
 .bar em{font-style:normal;text-align:right;color:var(--mute);font-variant-numeric:tabular-nums}
+.grp{font-size:12px;color:var(--mute);margin:0 0 6px}
+.thead{display:flex;justify-content:space-between;align-items:baseline;margin:30px 0 8px}
+.thead h3{font:400 22px/1.1 "Instrument Serif",Georgia,serif;margin:0}
+.thead span{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.tasks{border-top:1px solid var(--line)}
+.task{display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.task .obj{border:0;flex:1;min-width:0}
+.task .obj .t{overflow-wrap:anywhere}
+.tdel{flex:none;width:32px;height:32px;border-radius:50%;color:var(--mute);font-size:18px;line-height:1;opacity:.55}
+.tdel:hover,.tdel:focus-visible{opacity:1;color:var(--fail)}
+.newtask{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.newtask .box{border-style:dashed;border-color:var(--l2);color:var(--l2);font-size:16px;line-height:1}
+.newtask input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:4px 0}
+.newtask input::placeholder{color:var(--mute)}
 section.game{margin-top:48px}
 .ghead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:end;margin-bottom:26px}
 @media (max-width:560px){.ghead{grid-template-columns:minmax(0,1fr);gap:16px}}
@@ -190,9 +204,12 @@ dialog input{width:100%;border:0;border-bottom:1px solid var(--line);background:
     <div>
       <h2 id="dTitle">Hoy</h2>
       <p class="sub" id="dSub">Marca lo que has cumplido</p>
-      <div id="objs"></div>
+      <div class="grp">Objetivos</div>
+<div id="objs"></div>
       <p class="verdict" id="verdict"></p>
       <p class="dpts" id="dPts"></p>
+<div class="thead"><h3>Tareas del día</h3><span id="tCount"></span></div>
+<div class="tasks" id="tasks"></div>
       <label class="nl" for="note">Nota del día</label>
       <textarea id="note" placeholder="Qué ha ido bien, qué lo ha impedido…"></textarea>
     </div>
@@ -409,6 +426,39 @@ function renderDay(){
   else if(sel===TK){v.className="verdict";v.textContent="Te quedan "+(inf.total-inf.done.length)+" para tachar el día."}
   else{v.className="verdict ko";v.textContent="Día fallido: "+inf.done.length+" de "+inf.total+" cumplidos."}
   const n=document.getElementById("note");if(document.activeElement!==n)n.value=inf.note;
+renderTasks();
+}
+const CHECK='<span class="box"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg></span><span class="t"></span>';
+function dayTasks(k){const d=state.days[k];return d&&Array.isArray(d.tasks)?d.tasks:[]}
+function renderTasks(){
+const list=dayTasks(sel),wrap=document.getElementById("tasks");
+const draft=document.getElementById("newTask");const keep=draft?draft.value:"";const hadFocus=draft&&document.activeElement===draft;
+wrap.innerHTML="";
+list.forEach(t=>{
+const row=document.createElement("div");row.className="task";
+const b=document.createElement("button");b.className="obj"+(t.done?" on":"");b.setAttribute("aria-pressed",!!t.done);b.innerHTML=CHECK;b.querySelector(".t").textContent=t.text;
+b.onclick=()=>{t.done=!t.done;persist();renderTasks()};
+const x=document.createElement("button");x.className="tdel";x.textContent="×";x.setAttribute("aria-label","Eliminar tarea: "+t.text);
+x.onclick=()=>{const d=state.days[sel];d.tasks=d.tasks.filter(y=>y!==t);persist();renderTasks()};
+row.appendChild(b);row.appendChild(x);wrap.appendChild(row);
+});
+const nr=document.createElement("label");nr.className="newtask";
+nr.innerHTML='<span class="box" aria-hidden="true">+</span><input id="newTask" placeholder="Nueva tarea" autocomplete="off" maxlength="140" enterkeyhint="done">';
+wrap.appendChild(nr);
+const inp=document.getElementById("newTask");inp.value=keep;
+inp.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();addTask(inp.value)}};
+if(hadFocus)inp.focus();
+const done=list.filter(t=>t.done).length;
+document.getElementById("tCount").textContent=list.length?done+" de "+list.length:"";
+}
+function addTask(text){
+text=String(text||"").trim();if(!text)return;
+const d=ensureDay(sel);if(!Array.isArray(d.tasks))d.tasks=[];
+d.tasks.push({id:"t"+Date.now().toString(36)+Math.random().toString(36).slice(2,5),text,done:false});
+persist();
+const inp=document.getElementById("newTask");if(inp)inp.value="";
+renderTasks();
+const i2=document.getElementById("newTask");if(i2)i2.focus();
 }
 
 function ensureDay(k){
