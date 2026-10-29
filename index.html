@@ -92,6 +92,20 @@ textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line)
 .newtask .box{border-style:dashed;border-color:var(--l2);color:var(--l2);font-size:16px;line-height:1}
 .newtask input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:4px 0}
 .newtask input::placeholder{color:var(--mute)}
+#vGym a{color:var(--ink)}
+#vGym input,#vGym textarea{color:var(--ink)}
+.rep{padding:10px 0 14px;border-bottom:1px solid var(--line)}
+.rep .rl{font-size:12px;color:var(--mute);margin-bottom:8px}
+.rep .chips2{display:flex;flex-wrap:wrap;gap:6px}
+.rep .chips2 button{height:36px;padding:0 13px;border-radius:999px;border:1px solid var(--line);font-size:13px}
+.rep .chips2 button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.rep .stp{display:flex;align-items:center;gap:10px;margin-top:10px}
+.rep .stp button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);font-size:17px}
+.rep .stp strong{font:400 26px/1 "Instrument Serif",Georgia,serif;min-width:32px;text-align:center;font-variant-numeric:tabular-nums}
+.rep .sum{font-size:12px;color:var(--mute);margin-top:10px}
+.pinb{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mute);margin-top:2px}
+.pinb svg{flex:none}
+.cell .pinm{position:absolute;left:8px;right:8px;bottom:3px;height:2px;border-radius:2px;background:currentColor;opacity:.6}
 section.game{margin-top:48px}
 .ghead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:end;margin-bottom:26px}
 @media (max-width:560px){.ghead{grid-template-columns:minmax(0,1fr);gap:16px}}
@@ -177,6 +191,8 @@ dialog input{width:100%;border:0;border-bottom:1px solid var(--line);background:
 <div class="wrap">
   <nav class="tabs" aria-label="Secciones">
     <button data-view="goals" class="on">Objetivos</button>
+    <button data-view="week">Mi Semana</button>
+    <button data-view="gym">Gimnasio</button>
     <button data-view="books">Libros</button>
     <button data-view="stats">Estadísticas</button>
     <button data-view="game">Rachas y medallas</button>
@@ -285,6 +301,1355 @@ dialog input{width:100%;border:0;border-bottom:1px solid var(--line);background:
     </div>
   </div>
 
+<div id="vWeek" hidden><iframe id="weekFrame" title="Mi Semana" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;
+&lt;title&gt;Mi Semana&lt;/title&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&amp;family=Instrument+Serif&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#FAFAF9;--surface:#FAFAF9;--surface-2:#EFEFEC;--text:#141414;--muted:#6F6F6B;--faint:#A9A9A4;
+  --line:#E2E2DE;--line-strong:#D6D6D2;--accent:#141414;--on-accent:#FAFAF9;--danger:#C8302A;--warn-bg:#EFEFEC;--warn-text:#141414;
+  --k-study:#141414;--k-train:#5B5B57;--k-meal:#DCDCD7;--k-routine:#A9A9A4;--on-ink:#FAFAF9;--on-train:#FAFAF9;
+  --shadow-lg:0 12px 40px rgba(0,0,0,.14);--r:12px;--r-sm:8px;--H:64px;
+  --serif:&quot;Instrument Serif&quot;,Georgia,serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=&quot;light&quot;]){
+  --bg:#161615;--surface:#161615;--surface-2:#222220;--text:#F2F2EF;--muted:#9A9A95;--faint:#6C6C68;
+  --line:#2E2E2C;--line-strong:#3A3A37;--accent:#F2F2EF;--on-accent:#161615;--danger:#EF5A52;--warn-bg:#222220;--warn-text:#F2F2EF;
+  --k-study:#F2F2EF;--k-train:#B5B5B0;--k-meal:#3A3A37;--k-routine:#6C6C68;--on-ink:#161615;--on-train:#161615;
+  --shadow-lg:0 12px 40px rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme=&quot;dark&quot;]{
+  --bg:#161615;--surface:#161615;--surface-2:#222220;--text:#F2F2EF;--muted:#9A9A95;--faint:#6C6C68;
+  --line:#2E2E2C;--line-strong:#3A3A37;--accent:#F2F2EF;--on-accent:#161615;--danger:#EF5A52;--warn-bg:#222220;--warn-text:#F2F2EF;
+  --k-study:#F2F2EF;--k-train:#B5B5B0;--k-meal:#3A3A37;--k-routine:#6C6C68;--on-ink:#161615;--on-train:#161615;
+  --shadow-lg:0 12px 40px rgba(0,0,0,.6);color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.5 &quot;Instrument Sans&quot;,system-ui,-apple-system,&quot;Segoe UI&quot;,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--text);outline-offset:2px;border-radius:6px}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 20px 56px}
+
+/* Categorías (monocromo) */
+.k-study{background:var(--k-study);color:var(--on-ink)}
+.k-train{background:var(--k-train);color:var(--on-train)}
+.k-futsal{background:repeating-linear-gradient(135deg,var(--faint) 0 1.2px,transparent 1.2px 7px),var(--bg);border:1.5px solid var(--text);color:var(--text)}
+.k-meal{background:var(--k-meal);color:var(--text)}
+.k-routine{background:transparent;border:1.5px dashed var(--k-routine);color:var(--muted)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;flex:none}
+.sw.k-futsal{background:repeating-linear-gradient(135deg,var(--text) 0 1px,transparent 1px 4px),var(--bg)}
+
+/* App shell */
+.appnav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin-bottom:26px}
+.appnav::-webkit-scrollbar{display:none}
+.appnav button{flex:none;padding:10px 14px;font-size:14px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.appnav button[aria-current=&quot;page&quot;]{color:var(--text);font-weight:500;border-bottom-color:var(--text)}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.top h1{margin:0;font:400 clamp(48px,9vw,84px)/.9 var(--serif);letter-spacing:-.01em}
+.top p{margin:12px 0 0;color:var(--muted);font-size:15px}
+.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--line-strong);background:transparent;transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--text)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.primary:hover{opacity:.88}
+.btn.danger{color:var(--danger);border-color:var(--danger)}
+.btn.icon{width:44px;padding:0;justify-content:center}
+.btn svg{width:18px;height:18px;flex:none}
+
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px;margin-bottom:20px}
+.seg button{height:36px;padding:0 16px;border-radius:999px;font-size:14px;color:var(--muted)}
+.seg button[aria-selected=&quot;true&quot;]{background:var(--accent);color:var(--on-accent)}
+
+.card{background:var(--surface);border-radius:var(--r);border:1px solid var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);font-size:13px}
+.chip[aria-pressed=&quot;false&quot;]{opacity:.4;text-decoration:line-through}
+
+/* Week grid */
+.gridcard{padding:0;overflow:hidden}
+.gridscroll{overflow:auto;max-height:max(480px,calc(100vh - 250px));overscroll-behavior:contain}
+.grid{display:grid;grid-template-columns:56px repeat(7,minmax(104px,1fr));min-width:800px}
+.ghead{position:sticky;top:0;z-index:3;background:var(--surface);border-bottom:1px solid var(--line);padding:12px 6px;text-align:center}
+.ghead .dn{font-size:12px;color:var(--muted);text-transform:capitalize}
+.ghead .dd{font:400 24px/1 var(--serif);margin-top:4px;display:inline-grid;place-items:center;min-width:36px;height:36px;border-radius:999px;font-variant-numeric:tabular-nums}
+.ghead.today .dn{color:var(--text);font-weight:600}
+.ghead.today .dd{background:var(--accent);color:var(--on-accent)}
+.hours{position:sticky;left:0;z-index:2;background:var(--surface);height:calc(var(--H)*16);border-right:1px solid var(--line)}
+.ghead.corner{left:0;z-index:5}
+.hours span{position:absolute;right:8px;transform:translateY(-50%);font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums}
+.hours span:first-child{transform:none;top:4px!important}
+.daycol{position:relative;height:calc(var(--H)*16);border-right:1px solid var(--line);background-image:repeating-linear-gradient(to bottom,var(--line) 0 1px,transparent 1px var(--H))}
+.daycol:last-child{border-right:0}
+.daycol.today{background-color:var(--surface-2)}
+.blk{position:absolute;left:3px;right:3px;border-radius:6px;padding:6px 8px;text-align:left;overflow:hidden;font-size:12px;line-height:1.3;display:flex;flex-direction:column;gap:1px;transition:transform .12s}
+.blk:hover{transform:translateY(-1px);z-index:2}
+.blk .bt{font-weight:600;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px}
+.blk .bs{color:inherit;opacity:.72;font-variant-numeric:tabular-nums;white-space:nowrap}
+.blk.k-futsal .bt,.blk.k-futsal .bs{background:var(--bg);padding:0 3px;margin-left:-3px;border-radius:3px;width:max-content;max-width:calc(100% + 3px)}
+.blk.k-futsal .bs{opacity:1;color:var(--muted)}
+.blk.pt{flex-direction:row;align-items:center;gap:6px;padding:0 8px;height:16px;border-radius:999px;font-size:11px;border-width:1px}
+.blk.pt .bs{font-weight:600;opacity:1}
+.blk.pt .bt{font-weight:400}
+.blk.done{opacity:.4}
+.blk.done .bt{text-decoration:line-through}
+.blk .ck{width:12px;height:12px;flex:none}
+.nowline{position:absolute;left:0;right:0;height:2px;background:var(--text);z-index:4;pointer-events:none;box-shadow:0 0 0 1px var(--bg)}
+.nowline::before{content:&quot;&quot;;position:absolute;left:-5px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--text);box-shadow:0 0 0 2px var(--bg)}
+
+/* Today */
+.todaylay{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+@media (max-width:900px){.todaylay{grid-template-columns:minmax(0,1fr)}}
+.side{display:flex;flex-direction:column;gap:16px}
+.pad{padding:20px}
+.lbl{font-size:12px;color:var(--muted)}
+.nowcard h2{margin:6px 0 4px;font:400 32px/1.05 var(--serif);display:flex;align-items:center;gap:10px}
+.countdown{font:400 44px/1 var(--serif);font-variant-numeric:tabular-nums;margin:8px 0 4px}
+.progress{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden;margin:12px 0 8px}
+.progress i{display:block;height:100%;background:var(--text);transition:width .4s}
+.tl{list-style:none;margin:0;padding:8px 20px 20px}
+.tl li{display:grid;grid-template-columns:56px 20px minmax(0,1fr);gap:12px;align-items:stretch}
+.tl .tt{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:16px;text-align:right}
+.tl .rail{position:relative;display:flex;justify-content:center}
+.tl .rail::before{content:&quot;&quot;;position:absolute;top:0;bottom:0;width:1px;background:var(--line-strong)}
+.tl li:first-child .rail::before{top:22px}
+.tl li:last-child .rail::before{bottom:calc(100% - 22px)}
+.tl .rail b{position:relative;margin-top:17px;width:12px;height:12px;border-radius:3px;outline:3px solid var(--surface)}
+.tl .item{display:flex;align-items:center;gap:12px;margin:5px 0;padding:12px 14px;border-radius:10px;border:1px solid var(--line);text-align:left;width:100%}
+.tl .item.cur{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}
+.tl .item.past:not(.isdone){opacity:.7}
+.tl .item .nm{font-weight:500}
+.tl .item .sub{font-size:13px;color:var(--muted)}
+.tl .item .grow{flex:1;min-width:0}
+.badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:500;background:var(--accent);color:var(--on-accent)}
+.badge.cat{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
+.check{width:26px;height:26px;border-radius:6px;border:1.5px solid var(--text);display:grid;place-items:center;flex:none;transition:background .15s}
+.check svg{width:16px;height:16px;opacity:0;color:var(--on-accent)}
+.check.on{background:var(--accent)}
+.check.on svg{opacity:1}
+.isdone .nm{text-decoration:line-through;color:var(--muted)}
+
+/* Stats */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:24px}
+@media (max-width:820px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpis .kpi{background:var(--surface);border:0;border-radius:0;padding:18px 20px}
+.kpi strong{display:block;font:400 44px/1 var(--serif);margin:8px 0 4px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--muted)}
+.charts{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px}
+@media (max-width:900px){.charts{grid-template-columns:minmax(0,1fr)}}
+.charts h3{margin:0 0 2px;font:400 26px/1.1 var(--serif)}
+.charts p.sub{margin:0 0 16px;font-size:13px;color:var(--muted)}
+.chart svg{display:block;width:100%;height:auto}
+.donutwrap{display:grid;grid-template-columns:180px minmax(0,1fr);gap:20px;align-items:center}
+@media (max-width:480px){.donutwrap{grid-template-columns:minmax(0,1fr);justify-items:center}}
+.dleg{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;width:100%}
+.dleg li{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px}
+.dleg li em{font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Drawer + modal */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:50;box-shadow:var(--shadow-lg);transform:translateX(100%);transition:transform .25s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding:20px 22px calc(20px + env(safe-area-inset-bottom))}
+.drawer.open{transform:none}
+@media (max-width:640px){.drawer{top:auto;width:100%;max-height:85vh;border-radius:16px 16px 0 0;border-left:0;border-top:1px solid var(--line);transform:translateY(100%)}}
+.dhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.dhead h2{margin:14px 0 0;font:400 36px/1.05 var(--serif)}
+.dlist{margin:20px 0;display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--line);padding-top:18px}
+.dlist div{display:flex;gap:12px;align-items:flex-start;font-size:14px}
+.dlist svg{width:18px;height:18px;color:var(--muted);flex:none;margin-top:2px}
+.dnotes{white-space:pre-wrap;color:var(--muted)}
+.dact{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.dact .btn{justify-content:center;height:46px}
+.modal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;pointer-events:none;opacity:0;transition:opacity .2s}
+.modal.open{pointer-events:auto;opacity:1}
+.modal .box{width:min(520px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:24px;transform:translateY(8px);transition:transform .2s}
+.modal.open .box{transform:none}
+.modal h2{margin:0 0 18px;font:400 34px/1.05 var(--serif)}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field&gt;label,.field&gt;.lbl2{font-size:13px;color:var(--muted)}
+.inp{height:44px;border-radius:var(--r-sm);border:1px solid var(--line-strong);background:transparent;padding:0 12px;width:100%}
+.inp:focus{outline:none;border-color:var(--text)}
+textarea.inp{height:84px;padding:10px 12px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cats{display:flex;flex-wrap:wrap;gap:8px}
+.cats button,.days button{height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);font-size:13px;display:inline-flex;align-items:center;gap:8px}
+.cats button[aria-pressed=&quot;true&quot;]{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text);font-weight:500}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.days button{padding:0;justify-content:center}
+.days button[aria-pressed=&quot;true&quot;]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.toggle{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--text)}
+.err{color:var(--danger);font-size:13px;margin-top:4px}
+.warn{background:var(--warn-bg);color:var(--warn-text);border:1px solid var(--line-strong);border-radius:10px;padding:12px 14px;font-size:13px;margin-bottom:16px}
+.warn strong{display:block;margin-bottom:4px;font-weight:600}
+.mfoot{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:var(--accent);color:var(--on-accent);padding:12px 18px;border-radius:999px;font-size:14px;z-index:80;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:640px){.top .btn .lbltxt{display:none}.top .btn.primary .lbltxt{display:inline}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.appnav{display:none!important}.wrap{padding:4px 0 32px!important}.drawer:not(.open){box-shadow:none}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+  &lt;nav class=&quot;appnav&quot; aria-label=&quot;Secciones de la app&quot;&gt;
+    &lt;button data-app=&quot;Objetivos&quot;&gt;Objetivos&lt;/button&gt;
+    &lt;button data-app=&quot;Libros&quot;&gt;Libros&lt;/button&gt;
+    &lt;button data-app=&quot;Gimnasio&quot;&gt;Gimnasio&lt;/button&gt;
+    &lt;button aria-current=&quot;page&quot;&gt;Mi Semana&lt;/button&gt;
+    &lt;button data-app=&quot;Estadísticas&quot;&gt;Estadísticas&lt;/button&gt;
+    &lt;button data-app=&quot;Rachas y medallas&quot;&gt;Rachas y medallas&lt;/button&gt;
+  &lt;/nav&gt;
+
+  &lt;header class=&quot;top&quot;&gt;
+    &lt;div&gt;
+      &lt;h1&gt;Mi Semana&lt;/h1&gt;
+      &lt;p id=&quot;weekLbl&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;actions&quot;&gt;
+      &lt;button class=&quot;btn icon&quot; id=&quot;themeBtn&quot; aria-label=&quot;Cambiar tema&quot;&gt;&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; id=&quot;resetBtn&quot; title=&quot;Restablecer horario original&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M3 12a9 9 0 1 0 3-6.7L3 8&quot;/&gt;&lt;path d=&quot;M3 3v5h5&quot;/&gt;&lt;/svg&gt;&lt;span class=&quot;lbltxt&quot;&gt;Restablecer&lt;/span&gt;&lt;/button&gt;
+      &lt;button class=&quot;btn primary&quot; id=&quot;newBtn&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M12 5v14M5 12h14&quot;/&gt;&lt;/svg&gt;&lt;span class=&quot;lbltxt&quot;&gt;Nueva actividad&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;div class=&quot;seg&quot; role=&quot;tablist&quot; aria-label=&quot;Vistas&quot;&gt;
+    &lt;button role=&quot;tab&quot; data-view=&quot;week&quot; aria-selected=&quot;true&quot;&gt;Semana&lt;/button&gt;
+    &lt;button role=&quot;tab&quot; data-view=&quot;today&quot; aria-selected=&quot;false&quot;&gt;Hoy&lt;/button&gt;
+    &lt;button role=&quot;tab&quot; data-view=&quot;stats&quot; aria-selected=&quot;false&quot;&gt;Estadísticas&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;section id=&quot;v-week&quot;&gt;
+    &lt;div class=&quot;legend&quot; id=&quot;legend&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;card gridcard&quot;&gt;&lt;div class=&quot;gridscroll&quot; id=&quot;gridscroll&quot;&gt;&lt;div class=&quot;grid&quot; id=&quot;grid&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;v-today&quot; hidden&gt;
+    &lt;div class=&quot;todaylay&quot;&gt;
+      &lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;pad&quot; style=&quot;padding-bottom:4px&quot;&gt;&lt;div class=&quot;lbl&quot; id=&quot;todayLbl&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;ol class=&quot;tl&quot; id=&quot;timeline&quot;&gt;&lt;/ol&gt;&lt;/div&gt;
+      &lt;div class=&quot;side&quot;&gt;
+        &lt;div class=&quot;card pad nowcard&quot; id=&quot;nowCard&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;card pad&quot; id=&quot;nextCard&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;card pad&quot; id=&quot;progCard&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;v-stats&quot; hidden&gt;
+    &lt;div class=&quot;kpis&quot; id=&quot;kpis&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;charts&quot;&gt;
+      &lt;div class=&quot;card pad chart&quot;&gt;&lt;h3&gt;Horas de estudio por día&lt;/h3&gt;&lt;p class=&quot;sub&quot;&gt;Tiempo en la biblioteca esta semana&lt;/p&gt;&lt;div id=&quot;bars&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;card pad chart&quot;&gt;&lt;h3&gt;Reparto semanal&lt;/h3&gt;&lt;p class=&quot;sub&quot;&gt;Horas por categoría&lt;/p&gt;&lt;div class=&quot;donutwrap&quot;&gt;&lt;div id=&quot;donut&quot;&gt;&lt;/div&gt;&lt;ul class=&quot;dleg&quot; id=&quot;dleg&quot;&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;scrim&quot; id=&quot;scrim&quot;&gt;&lt;/div&gt;
+&lt;aside class=&quot;drawer&quot; id=&quot;drawer&quot; aria-hidden=&quot;true&quot; aria-labelledby=&quot;dTitle&quot;&gt;&lt;/aside&gt;
+
+&lt;div class=&quot;modal&quot; id=&quot;modal&quot; aria-hidden=&quot;true&quot;&gt;
+  &lt;form class=&quot;box&quot; id=&quot;form&quot; novalidate role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;mTitle&quot;&gt;
+    &lt;h2 id=&quot;mTitle&quot;&gt;Nueva actividad&lt;/h2&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;fName&quot;&gt;Nombre&lt;/label&gt;&lt;input class=&quot;inp&quot; id=&quot;fName&quot; autocomplete=&quot;off&quot; placeholder=&quot;Repasar IFRS&quot;&gt;&lt;div class=&quot;err&quot; id=&quot;eName&quot; hidden&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;span class=&quot;lbl2&quot;&gt;Categoría&lt;/span&gt;&lt;div class=&quot;cats&quot; id=&quot;fCats&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;span class=&quot;lbl2&quot;&gt;Día(s)&lt;/span&gt;&lt;div class=&quot;days&quot; id=&quot;fDays&quot;&gt;&lt;/div&gt;&lt;div class=&quot;err&quot; id=&quot;eDays&quot; hidden&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;row2&quot;&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;fStart&quot;&gt;Hora de inicio&lt;/label&gt;&lt;input class=&quot;inp&quot; type=&quot;time&quot; id=&quot;fStart&quot; value=&quot;10:00&quot; step=&quot;300&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;fEnd&quot;&gt;Hora de fin (opcional)&lt;/label&gt;&lt;input class=&quot;inp&quot; type=&quot;time&quot; id=&quot;fEnd&quot; value=&quot;11:00&quot; step=&quot;300&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;err&quot; id=&quot;eTime&quot; hidden style=&quot;margin:-8px 0 12px&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;label class=&quot;toggle&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;fRepeat&quot; checked&gt; Repetir cada semana&lt;/label&gt;&lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;fNotes&quot;&gt;Notas&lt;/label&gt;&lt;textarea class=&quot;inp&quot; id=&quot;fNotes&quot; placeholder=&quot;Capítulo 4, ejercicios 1–10&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+    &lt;div class=&quot;warn&quot; id=&quot;overlap&quot; hidden&gt;&lt;/div&gt;
+    &lt;div class=&quot;mfoot&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;cancelBtn&quot;&gt;Cancelar&lt;/button&gt;&lt;button type=&quot;submit&quot; class=&quot;btn primary&quot; id=&quot;saveBtn&quot;&gt;Guardar&lt;/button&gt;&lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;toast&quot; id=&quot;toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+const CATS={
+  study:{name:&quot;Biblioteca&quot;,c:&quot;var(--k-study)&quot;},
+  train:{name:&quot;Entrenamiento&quot;,c:&quot;var(--k-train)&quot;},
+  futsal:{name:&quot;Futsal&quot;,c:&quot;url(#hatch)&quot;},
+  meal:{name:&quot;Comidas&quot;,c:&quot;var(--k-meal)&quot;},
+  routine:{name:&quot;Rutina&quot;,c:&quot;var(--k-routine)&quot;}
+};
+const DAYS=[&quot;lunes&quot;,&quot;martes&quot;,&quot;miércoles&quot;,&quot;jueves&quot;,&quot;viernes&quot;,&quot;sábado&quot;,&quot;domingo&quot;];
+const DS=[&quot;L&quot;,&quot;M&quot;,&quot;X&quot;,&quot;J&quot;,&quot;V&quot;,&quot;S&quot;,&quot;D&quot;];
+const MON=[&quot;ene&quot;,&quot;feb&quot;,&quot;mar&quot;,&quot;abr&quot;,&quot;may&quot;,&quot;jun&quot;,&quot;jul&quot;,&quot;ago&quot;,&quot;sep&quot;,&quot;oct&quot;,&quot;nov&quot;,&quot;dic&quot;];
+const START=8*60,END=24*60,POINT_MIN=15;
+const KEY=&quot;mi-semana-v1&quot;;
+const $=s=&gt;document.querySelector(s);
+const tm=s=&gt;{const[h,m]=s.split(&quot;:&quot;).map(Number);return h*60+m};
+const ts=m=&gt;String(Math.floor(m/60)%24).padStart(2,&quot;0&quot;)+&quot;:&quot;+String(m%60).padStart(2,&quot;0&quot;);
+const esc=s=&gt;String(s).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,c=&gt;({&quot;&amp;&quot;:&quot;&amp;amp;&quot;,&quot;&lt;&quot;:&quot;&amp;lt;&quot;,&quot;&gt;&quot;:&quot;&amp;gt;&quot;,&#x27;&quot;&#x27;:&quot;&amp;quot;&quot;,&quot;&#x27;&quot;:&quot;&amp;#39;&quot;}[c]));
+const uid=()=&gt;&quot;a&quot;+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+
+function seed(){
+  const out=[];let n=0;
+  const add=(name,cat,days,s,e)=&gt;days.forEach(d=&gt;out.push({id:&quot;s&quot;+(n++),name,cat,day:d,start:tm(s),end:e?tm(e):null,repeat:true,notes:&quot;&quot;}));
+  const ALL=[0,1,2,3,4,5,6],MW=[0,2],REST=[1,3,4,5,6];
+  add(&quot;Alarma&quot;,&quot;routine&quot;,ALL,&quot;08:00&quot;);
+  add(&quot;Desayuno&quot;,&quot;meal&quot;,ALL,&quot;08:30&quot;);
+  add(&quot;Biblio&quot;,&quot;study&quot;,MW,&quot;09:00&quot;,&quot;12:45&quot;);
+  add(&quot;Salir de la biblio&quot;,&quot;routine&quot;,MW,&quot;12:45&quot;);
+  add(&quot;Entrenamiento&quot;,&quot;train&quot;,MW,&quot;13:00&quot;,&quot;15:00&quot;);
+  add(&quot;Empezar a cocinar&quot;,&quot;meal&quot;,MW,&quot;15:00&quot;);
+  add(&quot;Comer&quot;,&quot;meal&quot;,MW,&quot;16:00&quot;);
+  add(&quot;Futsal&quot;,&quot;futsal&quot;,MW,&quot;17:15&quot;,&quot;19:00&quot;);
+  add(&quot;Biblio&quot;,&quot;study&quot;,MW,&quot;19:15&quot;,&quot;21:00&quot;);
+  add(&quot;Cena&quot;,&quot;meal&quot;,MW,&quot;21:00&quot;);
+  add(&quot;Biblio&quot;,&quot;study&quot;,REST,&quot;09:00&quot;,&quot;13:30&quot;);
+  add(&quot;Salir de la biblio&quot;,&quot;routine&quot;,REST,&quot;13:30&quot;);
+  add(&quot;Empezar a cocinar&quot;,&quot;meal&quot;,REST,&quot;14:00&quot;);
+  add(&quot;Comer&quot;,&quot;meal&quot;,REST,&quot;14:30&quot;);
+  add(&quot;Biblio&quot;,&quot;study&quot;,REST,&quot;16:00&quot;,&quot;19:30&quot;);
+  add(&quot;Entrenamiento&quot;,&quot;train&quot;,[1,3,4],&quot;19:30&quot;,&quot;21:30&quot;);
+  add(&quot;Entrenamiento&quot;,&quot;train&quot;,[6],&quot;19:30&quot;,&quot;21:00&quot;);
+  add(&quot;Cena&quot;,&quot;meal&quot;,REST,&quot;21:30&quot;);
+  add(&quot;Cama&quot;,&quot;routine&quot;,ALL,&quot;23:30&quot;);
+  return out;
+}
+
+function weekKey(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x.getFullYear()+&quot;-&quot;+String(x.getMonth()+1).padStart(2,&quot;0&quot;)+&quot;-&quot;+String(x.getDate()).padStart(2,&quot;0&quot;)}
+function monday(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x}
+
+let state;
+function load(){
+  let s=null;try{s=JSON.parse(store.get(KEY))}catch(e){}
+  state=s&amp;&amp;Array.isArray(s.acts)?s:{acts:seed(),done:{},filters:{},theme:null};
+  state.done=state.done||{};state.filters=state.filters||{};
+}
+function save(){store.set(KEY,JSON.stringify(state))}
+
+let now=new Date();
+const WK=()=&gt;weekKey(now);
+const todayIdx=()=&gt;(now.getDay()+6)%7;
+const nowMin=()=&gt;now.getHours()*60+now.getMinutes();
+const visible=a=&gt;a.repeat||a.week===WK();
+const acts=()=&gt;state.acts.filter(visible);
+const dayActs=d=&gt;acts().filter(a=&gt;a.day===d).sort((a,b)=&gt;a.start-b.start||(a.end==null)-(b.end==null));
+const isDone=a=&gt;!!(state.done[WK()]&amp;&amp;state.done[WK()][a.id]);
+const setDone=(a,v)=&gt;{const w=WK();state.done[w]=state.done[w]||{};if(v)state.done[w][a.id]=true;else delete state.done[w][a.id];save()};
+const endOf=a=&gt;a.end==null?a.start:a.end;
+const durH=a=&gt;a.end==null?POINT_MIN/60:(a.end-a.start)/60;
+const timeTxt=a=&gt;a.end==null?ts(a.start):ts(a.start)+&quot; – &quot;+ts(a.end);
+const catOn=c=&gt;state.filters[c]!==false;
+
+const ICON={
+  check:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M5 12.5l4.5 4.5L19 7.5&quot;/&gt;&lt;/svg&gt;&#x27;,
+  clock:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;9&quot;/&gt;&lt;path d=&quot;M12 7v5l3 2&quot;/&gt;&lt;/svg&gt;&#x27;,
+  cal:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;5&quot; width=&quot;18&quot; height=&quot;16&quot; rx=&quot;3&quot;/&gt;&lt;path d=&quot;M8 3v4M16 3v4M3 10h18&quot;/&gt;&lt;/svg&gt;&#x27;,
+  rep:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M17 2l3 3-3 3&quot;/&gt;&lt;path d=&quot;M4 11V9a4 4 0 0 1 4-4h12&quot;/&gt;&lt;path d=&quot;M7 22l-3-3 3-3&quot;/&gt;&lt;path d=&quot;M20 13v2a4 4 0 0 1-4 4H4&quot;/&gt;&lt;/svg&gt;&#x27;,
+  note:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M5 4h14v16H5z&quot;/&gt;&lt;path d=&quot;M9 9h6M9 13h6M9 17h3&quot;/&gt;&lt;/svg&gt;&#x27;,
+  x:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.2&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot;/&gt;&lt;/svg&gt;&#x27;,
+  sun:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;4&quot;/&gt;&lt;path d=&quot;M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4&quot;/&gt;&lt;/svg&gt;&#x27;,
+  moon:&#x27;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z&quot;/&gt;&lt;/svg&gt;&#x27;
+};
+
+/* ---------- Week ---------- */
+function layout(list){
+  const items=list.map(a=&gt;({a,s:a.start,e:a.end==null?a.start+1:a.end,lane:0,lanes:1}));
+  let cluster=[],cEnd=-1;
+  const flush=()=&gt;{const lanesEnd=[];cluster.forEach(it=&gt;{let l=lanesEnd.findIndex(e=&gt;e&lt;=it.s);if(l&lt;0){l=lanesEnd.length;lanesEnd.push(0)}lanesEnd[l]=it.e;it.lane=l});cluster.forEach(it=&gt;it.lanes=lanesEnd.length);cluster=[]};
+  items.sort((x,y)=&gt;x.s-y.s).forEach(it=&gt;{if(it.s&gt;=cEnd&amp;&amp;cluster.length)flush();cluster.push(it);cEnd=Math.max(cEnd,it.e)});
+  if(cluster.length)flush();
+  return items;
+}
+function renderLegend(){
+  $(&quot;#legend&quot;).innerHTML=Object.entries(CATS).map(([k,c])=&gt;`&lt;button class=&quot;chip&quot; data-cat=&quot;${k}&quot; aria-pressed=&quot;${catOn(k)}&quot;&gt;&lt;span class=&quot;sw k-${k}&quot;&gt;&lt;/span&gt;${c.name}&lt;/button&gt;`).join(&quot;&quot;);
+  document.querySelectorAll(&quot;#legend .chip&quot;).forEach(b=&gt;b.onclick=()=&gt;{const k=b.dataset.cat;state.filters[k]=!catOn(k);save();renderLegend();renderWeek()});
+}
+function renderWeek(){
+  const H=parseFloat(getComputedStyle(document.documentElement).getPropertyValue(&quot;--H&quot;))||64;
+  const mon=monday(now),ti=todayIdx();
+  let h=&#x27;&lt;div class=&quot;ghead corner&quot; style=&quot;border-right:1px solid var(--line)&quot;&gt;&lt;/div&gt;&#x27;;
+  for(let d=0;d&lt;7;d++){const dt=new Date(mon);dt.setDate(mon.getDate()+d);h+=`&lt;div class=&quot;ghead${d===ti?&quot; today&quot;:&quot;&quot;}&quot;&gt;&lt;div class=&quot;dn&quot;&gt;${DAYS[d].slice(0,3)}&lt;/div&gt;&lt;div class=&quot;dd&quot;&gt;${dt.getDate()}&lt;/div&gt;&lt;/div&gt;`}
+  h+=&#x27;&lt;div class=&quot;hours&quot;&gt;&#x27;;for(let i=0;i&lt;=16;i++)h+=`&lt;span style=&quot;top:${i*H}px&quot;&gt;${String(8+i).padStart(2,&quot;0&quot;)}:00&lt;/span&gt;`;h+=&#x27;&lt;/div&gt;&#x27;;
+  for(let d=0;d&lt;7;d++){
+    h+=`&lt;div class=&quot;daycol${d===ti?&quot; today&quot;:&quot;&quot;}&quot; data-day=&quot;${d}&quot;&gt;`;
+    layout(dayActs(d).filter(a=&gt;catOn(a.cat))).forEach(it=&gt;{
+      const a=it.a,top=(Math.max(a.start,START)-START)/60*H;
+      const w=100/it.lanes,pos=`top:${top}px;left:calc(${it.lane*w}% + 3px);width:calc(${w}% - 6px);right:auto;`;
+      const done=isDone(a),ck=done?`&lt;svg class=&quot;ck&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M5 12.5l4.5 4.5L19 7.5&quot;/&gt;&lt;/svg&gt;`:&quot;&quot;;
+      if(a.end==null){
+        h+=`&lt;button class=&quot;blk pt k-${a.cat}${done?&quot; done&quot;:&quot;&quot;}&quot; data-id=&quot;${a.id}&quot; style=&quot;${pos}&quot; aria-label=&quot;${esc(a.name)}, ${ts(a.start)}&quot;&gt;&lt;span class=&quot;bs&quot;&gt;${ts(a.start)}&lt;/span&gt;&lt;span class=&quot;bt&quot;&gt;${esc(a.name)}&lt;/span&gt;${ck}&lt;/button&gt;`;
+      }else{
+        const hh=Math.max((Math.min(a.end,END)-Math.max(a.start,START))/60*H-2,20);
+        h+=`&lt;button class=&quot;blk k-${a.cat}${done?&quot; done&quot;:&quot;&quot;}&quot; data-id=&quot;${a.id}&quot; style=&quot;${pos}height:${hh}px&quot; aria-label=&quot;${esc(a.name)}, ${timeTxt(a)}&quot;&gt;&lt;span class=&quot;bt&quot;&gt;${esc(a.name)}${ck}&lt;/span&gt;${hh&gt;34?`&lt;span class=&quot;bs&quot;&gt;${timeTxt(a)}&lt;/span&gt;`:&quot;&quot;}&lt;/button&gt;`;
+      }
+    });
+    if(d===ti){const m=nowMin();if(m&gt;=START&amp;&amp;m&lt;=END)h+=`&lt;div class=&quot;nowline&quot; style=&quot;top:${(m-START)/60*H}px&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;`}
+    h+=&#x27;&lt;/div&gt;&#x27;;
+  }
+  $(&quot;#grid&quot;).innerHTML=h;
+  document.querySelectorAll(&quot;#grid .blk&quot;).forEach(b=&gt;b.onclick=()=&gt;openDrawer(b.dataset.id));
+}
+function scrollToNow(){const sc=$(&quot;#gridscroll&quot;);const H=64;const m=nowMin();sc.scrollTop=Math.max(0,(Math.min(Math.max(m,START),END)-START)/60*H-140);const col=sc.querySelector(&quot;.daycol.today&quot;);if(col&amp;&amp;sc.clientWidth&lt;sc.scrollWidth)sc.scrollLeft=Math.max(0,col.offsetLeft-70)}
+
+/* ---------- Today ---------- */
+function curNext(list){
+  const m=nowMin();let cur=null,next=null;
+  list.forEach(a=&gt;{if(a.end!=null&amp;&amp;a.start&lt;=m&amp;&amp;m&lt;a.end)cur=a});
+  if(!cur){const past=list.filter(a=&gt;a.end==null&amp;&amp;a.start&lt;=m&amp;&amp;m&lt;a.start+POINT_MIN);if(past.length)cur=past[past.length-1]}
+  next=list.find(a=&gt;a.start&gt;m)||null;
+  return{cur,next};
+}
+function fmtDur(sec){const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;return (h?h+&quot; h &quot;:&quot;&quot;)+String(m).padStart(h?2:1,&quot;0&quot;)+&quot; min &quot;+String(s).padStart(2,&quot;0&quot;)+&quot; s&quot;}
+function renderToday(){
+  const d=todayIdx(),list=dayActs(d),m=nowMin(),{cur,next}=curNext(list);
+  $(&quot;#todayLbl&quot;).textContent=DAYS[d].charAt(0).toUpperCase()+DAYS[d].slice(1)+&quot;, &quot;+now.getDate()+&quot; de &quot;+[&quot;enero&quot;,&quot;febrero&quot;,&quot;marzo&quot;,&quot;abril&quot;,&quot;mayo&quot;,&quot;junio&quot;,&quot;julio&quot;,&quot;agosto&quot;,&quot;septiembre&quot;,&quot;octubre&quot;,&quot;noviembre&quot;,&quot;diciembre&quot;][now.getMonth()];
+  $(&quot;#timeline&quot;).innerHTML=list.map(a=&gt;{
+    const done=isDone(a),isCur=cur&amp;&amp;cur.id===a.id,past=endOf(a)&lt;=m&amp;&amp;!isCur;
+    return `&lt;li&gt;&lt;span class=&quot;tt&quot;&gt;${ts(a.start)}&lt;/span&gt;&lt;span class=&quot;rail&quot;&gt;&lt;b class=&quot;k-${a.cat}&quot;&gt;&lt;/b&gt;&lt;/span&gt;
+      &lt;div class=&quot;item${isCur?&quot; cur&quot;:&quot;&quot;}${past?&quot; past&quot;:&quot;&quot;}${done?&quot; isdone&quot;:&quot;&quot;}&quot;&gt;
+        &lt;button class=&quot;check${done?&quot; on&quot;:&quot;&quot;}&quot; data-tog=&quot;${a.id}&quot; aria-label=&quot;${done?&quot;Desmarcar&quot;:&quot;Marcar&quot;} ${esc(a.name)}&quot; aria-pressed=&quot;${done}&quot;&gt;${ICON.check}&lt;/button&gt;
+        &lt;button class=&quot;grow&quot; data-open=&quot;${a.id}&quot; style=&quot;text-align:left&quot;&gt;&lt;div class=&quot;nm&quot;&gt;${esc(a.name)}&lt;/div&gt;&lt;div class=&quot;sub&quot;&gt;${timeTxt(a)} · ${CATS[a.cat].name}&lt;/div&gt;&lt;/button&gt;
+        ${isCur?`&lt;span class=&quot;badge&quot;&gt;Ahora&lt;/span&gt;`:&quot;&quot;}
+      &lt;/div&gt;&lt;/li&gt;`}).join(&quot;&quot;)||&#x27;&lt;li&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;p style=&quot;color:var(--muted)&quot;&gt;No hay actividades hoy.&lt;/p&gt;&lt;/li&gt;&#x27;;
+  document.querySelectorAll(&quot;[data-tog]&quot;).forEach(b=&gt;b.onclick=()=&gt;{const a=state.acts.find(x=&gt;x.id===b.dataset.tog);setDone(a,!isDone(a));renderAll()});
+  document.querySelectorAll(&quot;[data-open]&quot;).forEach(b=&gt;b.onclick=()=&gt;openDrawer(b.dataset.open));
+  renderNowCards(list,cur,next);
+  const dn=list.filter(isDone).length,pct=list.length?Math.round(dn/list.length*100):0;
+  $(&quot;#progCard&quot;).innerHTML=`&lt;div class=&quot;lbl&quot;&gt;Progreso del día&lt;/div&gt;&lt;div style=&quot;display:flex;justify-content:space-between;align-items:baseline;margin-top:6px&quot;&gt;&lt;strong style=&quot;font:400 40px/1 var(--serif)&quot;&gt;${pct}%&lt;/strong&gt;&lt;span style=&quot;font-size:13px;color:var(--muted)&quot;&gt;${dn} de ${list.length} hechas&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;progress&quot;&gt;&lt;i style=&quot;width:${pct}%&quot;&gt;&lt;/i&gt;&lt;/div&gt;`;
+}
+function renderNowCards(list,cur,next){
+  if(!list){const d=todayIdx();list=dayActs(d);({cur,next}=curNext(list))}
+  const secNow=now.getHours()*3600+now.getMinutes()*60+now.getSeconds();
+  if(cur){const left=cur.end!=null?Math.max(0,cur.end*60-secNow):0;
+    $(&quot;#nowCard&quot;).innerHTML=`&lt;div class=&quot;lbl&quot;&gt;Ahora&lt;/div&gt;&lt;h2&gt;&lt;span class=&quot;sw k-${cur.cat}&quot; style=&quot;width:14px;height:14px&quot;&gt;&lt;/span&gt;${esc(cur.name)}&lt;/h2&gt;&lt;div style=&quot;font-size:14px;color:var(--muted)&quot;&gt;${timeTxt(cur)}${cur.end!=null?&quot; · termina en &quot;+fmtDur(left).replace(/ \d+ s$/,&quot;&quot;):&quot;&quot;}&lt;/div&gt;`}
+  else $(&quot;#nowCard&quot;).innerHTML=`&lt;div class=&quot;lbl&quot;&gt;Ahora&lt;/div&gt;&lt;h2&gt;Tiempo libre&lt;/h2&gt;&lt;div style=&quot;font-size:14px;color:var(--muted)&quot;&gt;No hay ninguna actividad en curso.&lt;/div&gt;`;
+  if(next){const s=Math.max(0,next.start*60-secNow);
+    $(&quot;#nextCard&quot;).innerHTML=`&lt;div class=&quot;lbl&quot;&gt;Siguiente&lt;/div&gt;&lt;div style=&quot;display:flex;align-items:center;gap:8px;margin-top:6px;font-weight:600&quot;&gt;&lt;span class=&quot;sw k-${next.cat}&quot;&gt;&lt;/span&gt;${esc(next.name)} · ${ts(next.start)}&lt;/div&gt;&lt;div class=&quot;countdown&quot;&gt;${fmtDur(s)}&lt;/div&gt;&lt;div style=&quot;font-size:13px;color:var(--muted)&quot;&gt;para empezar&lt;/div&gt;`}
+  else $(&quot;#nextCard&quot;).innerHTML=`&lt;div class=&quot;lbl&quot;&gt;Siguiente&lt;/div&gt;&lt;div style=&quot;margin-top:6px;font-weight:600&quot;&gt;Nada más por hoy&lt;/div&gt;&lt;div style=&quot;font-size:13px;color:var(--muted)&quot;&gt;Descansa, mañana sigue la semana.&lt;/div&gt;`;
+}
+
+/* ---------- Stats ---------- */
+function renderStats(){
+  const all=acts();
+  const study=[0,1,2,3,4,5,6].map(d=&gt;all.filter(a=&gt;a.day===d&amp;&amp;a.cat===&quot;study&quot;&amp;&amp;a.end!=null).reduce((s,a)=&gt;s+durH(a),0));
+  const totalStudy=study.reduce((a,b)=&gt;a+b,0);
+  const trains=all.filter(a=&gt;a.cat===&quot;train&quot;).length,fut=all.filter(a=&gt;a.cat===&quot;futsal&quot;).length;
+  const m=nowMin(),ti=todayIdx();
+  const due=all.filter(a=&gt;a.day&lt;ti||(a.day===ti&amp;&amp;a.start&lt;=m));
+  const doneCnt=all.filter(isDone).length;
+  const pct=due.length?Math.round(all.filter(a=&gt;isDone(a)&amp;&amp;due.includes(a)).length/due.length*100):0;
+  const f=v=&gt;(Math.round(v*10)/10).toLocaleString(&quot;es-ES&quot;);
+  $(&quot;#kpis&quot;).innerHTML=[
+    [&quot;Horas de biblioteca&quot;,f(totalStudy)+&quot; h&quot;],[&quot;Sesiones de entrenamiento&quot;,trains],[&quot;Partidos de futsal&quot;,fut],[&quot;Actividades cumplidas&quot;,pct+&quot;%&quot;,doneCnt+(doneCnt===1?&quot; hecha · &quot;:&quot; hechas · &quot;)+due.length+&quot; ya pasadas&quot;]
+  ].map(([l,v,s])=&gt;`&lt;div class=&quot;card kpi&quot;&gt;&lt;span&gt;${l}&lt;/span&gt;&lt;strong&gt;${v}&lt;/strong&gt;${s?`&lt;span style=&quot;font-size:12px&quot;&gt;${s}&lt;/span&gt;`:&quot;&quot;}&lt;/div&gt;`).join(&quot;&quot;);
+  // bars
+  const W=560,Hh=240,pl=34,pb=28,pt=24,max=Math.max(2,Math.ceil(Math.max(...study)/2)*2);
+  const bw=(W-pl-10)/7;let s=`&lt;svg viewBox=&quot;0 0 ${W} ${Hh}&quot; role=&quot;img&quot; aria-label=&quot;Horas de estudio por día&quot;&gt;`;
+  for(let g=0;g&lt;=max;g+=2){const y=pt+(Hh-pt-pb)*(1-g/max);s+=`&lt;line x1=&quot;${pl}&quot; x2=&quot;${W}&quot; y1=&quot;${y}&quot; y2=&quot;${y}&quot; stroke=&quot;var(--line)&quot;/&gt;&lt;text x=&quot;${pl-8}&quot; y=&quot;${y+4}&quot; text-anchor=&quot;end&quot; font-size=&quot;11&quot; fill=&quot;var(--faint)&quot;&gt;${g}h&lt;/text&gt;`}
+  study.forEach((v,i)=&gt;{const h=(Hh-pt-pb)*v/max,x=pl+i*bw+bw*.2,w=bw*.6,y=Hh-pb-h;
+    s+=`&lt;rect x=&quot;${x}&quot; y=&quot;${y}&quot; width=&quot;${w}&quot; height=&quot;${Math.max(h,0)}&quot; rx=&quot;4&quot; style=&quot;fill:${i===ti?&quot;var(--text)&quot;:&quot;var(--faint)&quot;}&quot;&gt;&lt;title&gt;${DAYS[i]}: ${f(v)} h&lt;/title&gt;&lt;/rect&gt;`;
+    if(v&gt;0)s+=`&lt;text x=&quot;${x+w/2}&quot; y=&quot;${y-7}&quot; text-anchor=&quot;middle&quot; font-size=&quot;13&quot; fill=&quot;var(--text)&quot; font-family=&quot;Instrument Serif,Georgia,serif&quot; style=&quot;font-size:16px&quot;&gt;${f(v)}&lt;/text&gt;`;
+    s+=`&lt;text x=&quot;${x+w/2}&quot; y=&quot;${Hh-8}&quot; text-anchor=&quot;middle&quot; font-size=&quot;12&quot; fill=&quot;${i===ti?&quot;var(--text)&quot;:&quot;var(--muted)&quot;}&quot; font-weight=&quot;${i===ti?600:400}&quot;&gt;${DS[i]}&lt;/text&gt;`});
+  $(&quot;#bars&quot;).innerHTML=s+&quot;&lt;/svg&gt;&quot;;
+  // donut
+  const per=Object.keys(CATS).map(k=&gt;({k,v:all.filter(a=&gt;a.cat===k).reduce((s,a)=&gt;s+durH(a),0)})).filter(x=&gt;x.v&gt;0);
+  const tot=per.reduce((a,b)=&gt;a+b.v,0)||1,R=70,C=2*Math.PI*R;let off=0;
+  let d=`&lt;svg viewBox=&quot;0 0 180 180&quot; width=&quot;180&quot; height=&quot;180&quot; role=&quot;img&quot; aria-label=&quot;Reparto semanal por categoría&quot;&gt;&lt;defs&gt;&lt;pattern id=&quot;hatch&quot; width=&quot;6&quot; height=&quot;6&quot; patternUnits=&quot;userSpaceOnUse&quot; patternTransform=&quot;rotate(45)&quot;&gt;&lt;rect width=&quot;6&quot; height=&quot;6&quot; fill=&quot;var(--bg)&quot;/&gt;&lt;rect width=&quot;1.6&quot; height=&quot;6&quot; fill=&quot;var(--text)&quot;/&gt;&lt;/pattern&gt;&lt;/defs&gt;&lt;g transform=&quot;rotate(-90 90 90)&quot;&gt;`;
+  per.forEach(p=&gt;{const len=C*p.v/tot;d+=`&lt;circle cx=&quot;90&quot; cy=&quot;90&quot; r=&quot;${R}&quot; fill=&quot;none&quot; style=&quot;stroke:${CATS[p.k].c}&quot; stroke-width=&quot;24&quot; stroke-dasharray=&quot;${Math.max(len-2,0)} ${C}&quot; stroke-dashoffset=&quot;${-off}&quot;&gt;&lt;title&gt;${CATS[p.k].name}: ${f(p.v)} h&lt;/title&gt;&lt;/circle&gt;`;off+=len});
+  d+=`&lt;/g&gt;&lt;text x=&quot;90&quot; y=&quot;86&quot; text-anchor=&quot;middle&quot; font-size=&quot;34&quot; fill=&quot;var(--text)&quot; font-family=&quot;Instrument Serif,Georgia,serif&quot;&gt;${f(tot)}&lt;/text&gt;&lt;text x=&quot;90&quot; y=&quot;106&quot; text-anchor=&quot;middle&quot; font-size=&quot;12&quot; fill=&quot;var(--muted)&quot;&gt;horas&lt;/text&gt;&lt;/svg&gt;`;
+  $(&quot;#donut&quot;).innerHTML=d;
+  $(&quot;#dleg&quot;).innerHTML=per.map(p=&gt;`&lt;li&gt;&lt;span class=&quot;sw k-${p.k}&quot;&gt;&lt;/span&gt;&lt;span&gt;${CATS[p.k].name}&lt;/span&gt;&lt;em&gt;${f(p.v)} h · ${Math.round(p.v/tot*100)}%&lt;/em&gt;&lt;/li&gt;`).join(&quot;&quot;)+`&lt;li style=&quot;grid-template-columns:1fr;font-size:12px;color:var(--faint)&quot;&gt;Los avisos puntuales (alarma, comidas…) cuentan 15 min.&lt;/li&gt;`;
+}
+
+/* ---------- Drawer ---------- */
+let openId=null;
+function openDrawer(id){
+  const a=state.acts.find(x=&gt;x.id===id);if(!a)return;openId=id;
+  const done=isDone(a);
+  $(&quot;#drawer&quot;).innerHTML=`&lt;div class=&quot;dhead&quot;&gt;&lt;span class=&quot;badge cat&quot;&gt;&lt;span class=&quot;sw k-${a.cat}&quot;&gt;&lt;/span&gt;${CATS[a.cat].name}&lt;/span&gt;&lt;button class=&quot;btn icon&quot; id=&quot;dClose&quot; aria-label=&quot;Cerrar&quot;&gt;${ICON.x}&lt;/button&gt;&lt;/div&gt;
+    &lt;h2 id=&quot;dTitle&quot;&gt;${esc(a.name)}&lt;/h2&gt;
+    &lt;div class=&quot;dlist&quot;&gt;
+      &lt;div&gt;${ICON.cal}&lt;span style=&quot;text-transform:capitalize&quot;&gt;${DAYS[a.day]}&lt;/span&gt;&lt;/div&gt;
+      &lt;div&gt;${ICON.clock}&lt;span&gt;${timeTxt(a)}${a.end!=null?&quot; · &quot;+f2(durH(a))+&quot; h&quot;:&quot; · aviso puntual&quot;}&lt;/span&gt;&lt;/div&gt;
+      &lt;div&gt;${ICON.rep}&lt;span&gt;${a.repeat?&quot;Se repite cada semana&quot;:&quot;Solo esta semana&quot;}&lt;/span&gt;&lt;/div&gt;
+      ${a.notes?`&lt;div&gt;${ICON.note}&lt;span class=&quot;dnotes&quot;&gt;${esc(a.notes)}&lt;/span&gt;&lt;/div&gt;`:&quot;&quot;}
+      &lt;div&gt;${ICON.check}&lt;span&gt;${done?&quot;Hecha esta semana&quot;:&quot;Pendiente esta semana&quot;}&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;dact&quot;&gt;
+      &lt;button class=&quot;btn primary&quot; id=&quot;dDone&quot;&gt;${done?&quot;Marcar como pendiente&quot;:&quot;Marcar como hecha&quot;}&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; id=&quot;dEdit&quot;&gt;Editar&lt;/button&gt;
+      &lt;button class=&quot;btn danger&quot; id=&quot;dDel&quot;&gt;Eliminar&lt;/button&gt;
+    &lt;/div&gt;`;
+  $(&quot;#drawer&quot;).classList.add(&quot;open&quot;);$(&quot;#scrim&quot;).classList.add(&quot;open&quot;);$(&quot;#drawer&quot;).setAttribute(&quot;aria-hidden&quot;,&quot;false&quot;);
+  $(&quot;#dClose&quot;).onclick=closeDrawer;
+  $(&quot;#dDone&quot;).onclick=()=&gt;{setDone(a,!done);renderAll();openDrawer(id);toast(done?&quot;Marcada como pendiente&quot;:&quot;¡Hecha!&quot;)};
+  $(&quot;#dEdit&quot;).onclick=()=&gt;{closeDrawer();openModal(a)};
+  $(&quot;#dDel&quot;).onclick=()=&gt;{if(!confirm(&quot;¿Eliminar «&quot;+a.name+&quot;» del &quot;+DAYS[a.day]+&quot;?&quot;))return;state.acts=state.acts.filter(x=&gt;x.id!==id);save();closeDrawer();renderAll();toast(&quot;Actividad eliminada&quot;)};
+  setTimeout(()=&gt;$(&quot;#dClose&quot;).focus(),50);
+}
+const f2=v=&gt;(Math.round(v*100)/100).toLocaleString(&quot;es-ES&quot;);
+function closeDrawer(){openId=null;$(&quot;#drawer&quot;).classList.remove(&quot;open&quot;);$(&quot;#drawer&quot;).setAttribute(&quot;aria-hidden&quot;,&quot;true&quot;);if(!$(&quot;#modal&quot;).classList.contains(&quot;open&quot;))$(&quot;#scrim&quot;).classList.remove(&quot;open&quot;)}
+
+/* ---------- Modal ---------- */
+let editing=null,fCat=&quot;study&quot;,fDays=new Set(),forced=false;
+function openModal(a){
+  editing=a||null;forced=false;
+  $(&quot;#mTitle&quot;).textContent=a?&quot;Editar actividad&quot;:&quot;Nueva actividad&quot;;
+  $(&quot;#fName&quot;).value=a?a.name:&quot;&quot;;
+  fCat=a?a.cat:&quot;study&quot;;
+  fDays=new Set(a?[a.day]:[todayIdx()]);
+  $(&quot;#fStart&quot;).value=a?ts(a.start):&quot;10:00&quot;;
+  $(&quot;#fEnd&quot;).value=a?(a.end!=null?ts(a.end):&quot;&quot;):&quot;11:00&quot;;
+  $(&quot;#fRepeat&quot;).checked=a?a.repeat:true;
+  $(&quot;#fNotes&quot;).value=a?a.notes||&quot;&quot;:&quot;&quot;;
+  [&quot;eName&quot;,&quot;eDays&quot;,&quot;eTime&quot;].forEach(i=&gt;$(&quot;#&quot;+i).hidden=true);
+  drawCats();drawDays();checkOverlap();
+  $(&quot;#modal&quot;).classList.add(&quot;open&quot;);$(&quot;#scrim&quot;).classList.add(&quot;open&quot;);$(&quot;#modal&quot;).setAttribute(&quot;aria-hidden&quot;,&quot;false&quot;);
+  setTimeout(()=&gt;$(&quot;#fName&quot;).focus(),50);
+}
+function closeModal(){$(&quot;#modal&quot;).classList.remove(&quot;open&quot;);$(&quot;#modal&quot;).setAttribute(&quot;aria-hidden&quot;,&quot;true&quot;);if(!$(&quot;#drawer&quot;).classList.contains(&quot;open&quot;))$(&quot;#scrim&quot;).classList.remove(&quot;open&quot;)}
+function drawCats(){$(&quot;#fCats&quot;).innerHTML=Object.entries(CATS).map(([k,c])=&gt;`&lt;button type=&quot;button&quot; data-k=&quot;${k}&quot; aria-pressed=&quot;${k===fCat}&quot;&gt;&lt;span class=&quot;sw k-${k}&quot;&gt;&lt;/span&gt;${c.name}&lt;/button&gt;`).join(&quot;&quot;);document.querySelectorAll(&quot;#fCats button&quot;).forEach(b=&gt;b.onclick=()=&gt;{fCat=b.dataset.k;drawCats()})}
+function drawDays(){$(&quot;#fDays&quot;).innerHTML=DS.map((l,i)=&gt;`&lt;button type=&quot;button&quot; data-d=&quot;${i}&quot; aria-pressed=&quot;${fDays.has(i)}&quot; aria-label=&quot;${DAYS[i]}&quot;&gt;${l}&lt;/button&gt;`).join(&quot;&quot;);document.querySelectorAll(&quot;#fDays button&quot;).forEach(b=&gt;b.onclick=()=&gt;{const d=+b.dataset.d;if(editing){fDays=new Set([d])}else{fDays.has(d)?fDays.delete(d):fDays.add(d)}drawDays();$(&quot;#eDays&quot;).hidden=true;checkOverlap()})}
+function readTimes(){const s=$(&quot;#fStart&quot;).value,e=$(&quot;#fEnd&quot;).value;return{s:s?tm(s):null,e:e?(tm(e)===0?24*60:tm(e)):null}}
+function overlaps(day,s,e,skipId,repeat){
+  const iv=x=&gt;x.end==null?[x.start,x.start+1]:[x.start,x.end];
+  const me=e==null?[s,s+1]:[s,e];
+  return state.acts.filter(x=&gt;x.id!==skipId&amp;&amp;x.day===day&amp;&amp;(x.repeat||x.week===WK()||repeat)&amp;&amp;(visible(x))).filter(x=&gt;{const[a,b]=iv(x);return a&lt;me[1]&amp;&amp;me[0]&lt;b});
+}
+function checkOverlap(){
+  const{s,e}=readTimes();const box=$(&quot;#overlap&quot;);forced=false;$(&quot;#saveBtn&quot;).textContent=&quot;Guardar&quot;;
+  if(s==null||(e!=null&amp;&amp;e&lt;=s)){box.hidden=true;return[]}
+  const hits=[];fDays.forEach(d=&gt;overlaps(d,s,e,editing&amp;&amp;editing.id,$(&quot;#fRepeat&quot;).checked).forEach(x=&gt;hits.push(x)));
+  if(!hits.length){box.hidden=true;return hits}
+  box.hidden=false;
+  box.innerHTML=`&lt;strong&gt;Se solapa con ${hits.length===1?&quot;otra actividad&quot;:hits.length+&quot; actividades&quot;}&lt;/strong&gt;`+hits.slice(0,5).map(x=&gt;`&lt;div&gt;${esc(x.name)} · &lt;span style=&quot;text-transform:capitalize&quot;&gt;${DAYS[x.day]}&lt;/span&gt; ${timeTxt(x)}&lt;/div&gt;`).join(&quot;&quot;)+(hits.length&gt;5?`&lt;div&gt;y ${hits.length-5} más…&lt;/div&gt;`:&quot;&quot;);
+  $(&quot;#saveBtn&quot;).textContent=&quot;Guardar igualmente&quot;;forced=true;
+  return hits;
+}
+[&quot;fStart&quot;,&quot;fEnd&quot;,&quot;fRepeat&quot;].forEach(i=&gt;$(&quot;#&quot;+i).addEventListener(&quot;input&quot;,()=&gt;{$(&quot;#eTime&quot;).hidden=true;checkOverlap()}));
+$(&quot;#fName&quot;).addEventListener(&quot;input&quot;,()=&gt;$(&quot;#eName&quot;).hidden=true);
+$(&quot;#form&quot;).onsubmit=e=&gt;{
+  e.preventDefault();
+  const name=$(&quot;#fName&quot;).value.trim(),{s,e:en}=readTimes();let ok=true;
+  if(!name){$(&quot;#eName&quot;).textContent=&quot;Escribe un nombre.&quot;;$(&quot;#eName&quot;).hidden=false;ok=false}
+  if(!fDays.size){$(&quot;#eDays&quot;).textContent=&quot;Elige al menos un día.&quot;;$(&quot;#eDays&quot;).hidden=false;ok=false}
+  if(s==null){$(&quot;#eTime&quot;).textContent=&quot;Indica la hora de inicio.&quot;;$(&quot;#eTime&quot;).hidden=false;ok=false}
+  else if(en!=null&amp;&amp;en&lt;=s){$(&quot;#eTime&quot;).textContent=&quot;La hora de fin debe ser posterior a la de inicio.&quot;;$(&quot;#eTime&quot;).hidden=false;ok=false}
+  if(!ok)return;
+  const repeat=$(&quot;#fRepeat&quot;).checked,notes=$(&quot;#fNotes&quot;).value.trim();
+  if(editing){Object.assign(editing,{name,cat:fCat,day:[...fDays][0],start:s,end:en,repeat,notes,week:repeat?undefined:WK()})}
+  else [...fDays].sort().forEach(d=&gt;state.acts.push({id:uid(),name,cat:fCat,day:d,start:s,end:en,repeat,notes,week:repeat?undefined:WK()}));
+  save();closeModal();renderAll();toast(editing?&quot;Actividad actualizada&quot;:(fDays.size&gt;1?fDays.size+&quot; actividades creadas&quot;:&quot;Actividad creada&quot;));
+};
+$(&quot;#cancelBtn&quot;).onclick=closeModal;
+$(&quot;#scrim&quot;).onclick=()=&gt;{closeModal();closeDrawer()};
+document.addEventListener(&quot;keydown&quot;,e=&gt;{if(e.key===&quot;Escape&quot;){if($(&quot;#modal&quot;).classList.contains(&quot;open&quot;))closeModal();else closeDrawer()}});
+
+/* ---------- Shell ---------- */
+let view=&quot;week&quot;;
+function setView(v){view=v;document.querySelectorAll(&quot;.seg button&quot;).forEach(b=&gt;b.setAttribute(&quot;aria-selected&quot;,b.dataset.view===v));
+  [&quot;week&quot;,&quot;today&quot;,&quot;stats&quot;].forEach(k=&gt;$(&quot;#v-&quot;+k).hidden=k!==v);renderAll();if(v===&quot;week&quot;)scrollToNow()}
+document.querySelectorAll(&quot;.seg button&quot;).forEach(b=&gt;b.onclick=()=&gt;setView(b.dataset.view));
+document.querySelectorAll(&quot;.appnav [data-app]&quot;).forEach(b=&gt;b.onclick=()=&gt;toast(b.dataset.app+&quot; está en la app completa&quot;));
+$(&quot;#newBtn&quot;).onclick=()=&gt;openModal(null);
+$(&quot;#resetBtn&quot;).onclick=()=&gt;{if(!confirm(&quot;Se restaurará el horario original y se borrará el progreso marcado. ¿Continuar?&quot;))return;const th=state.theme;state={acts:seed(),done:{},filters:{},theme:th};save();renderLegend();renderAll();toast(&quot;Horario restablecido&quot;)};
+function applyTheme(){const t=state.theme;if(t)document.documentElement.setAttribute(&quot;data-theme&quot;,t);else document.documentElement.removeAttribute(&quot;data-theme&quot;);
+  const dark=t?t===&quot;dark&quot;:matchMedia(&quot;(prefers-color-scheme: dark)&quot;).matches;$(&quot;#themeBtn&quot;).innerHTML=dark?ICON.sun:ICON.moon;$(&quot;#themeBtn&quot;).setAttribute(&quot;aria-label&quot;,dark?&quot;Cambiar a modo claro&quot;:&quot;Cambiar a modo oscuro&quot;)}
+$(&quot;#themeBtn&quot;).onclick=()=&gt;{const dark=state.theme?state.theme===&quot;dark&quot;:matchMedia(&quot;(prefers-color-scheme: dark)&quot;).matches;state.theme=dark?&quot;light&quot;:&quot;dark&quot;;save();applyTheme();renderAll()};
+try{matchMedia(&quot;(prefers-color-scheme: dark)&quot;).addEventListener(&quot;change&quot;,()=&gt;{applyTheme();renderAll()})}catch(e){}
+let tt;function toast(t){const e=$(&quot;#toast&quot;);e.textContent=t;e.classList.add(&quot;show&quot;);clearTimeout(tt);tt=setTimeout(()=&gt;e.classList.remove(&quot;show&quot;),2600)}
+
+function renderWeekLbl(){const m=monday(now),s=new Date(m);s.setDate(m.getDate()+6);$(&quot;#weekLbl&quot;).textContent=&quot;Semana del &quot;+m.getDate()+&quot; &quot;+MON[m.getMonth()]+&quot; al &quot;+s.getDate()+&quot; &quot;+MON[s.getMonth()]+&quot; · &quot;+acts().length+&quot; actividades&quot;}
+function renderAll(){now=new Date();renderWeekLbl();if(view===&quot;week&quot;)renderWeek();if(view===&quot;today&quot;)renderToday();if(view===&quot;stats&quot;)renderStats()}
+
+load();applyTheme();renderLegend();renderAll();setTimeout(scrollToNow,60);
+let lastMin=nowMin();
+setInterval(()=&gt;{now=new Date();if(view===&quot;today&quot;)renderNowCards();if(nowMin()!==lastMin){lastMin=nowMin();renderAll()}},1000);
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" style="display:block;width:100%;height:max(640px,calc(100vh - 110px));border:0;background:var(--paper)"></iframe></div>
+<div id="vGym" hidden><div class="gympage" data-page="Main">
+
+<div style="background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.5; ">
+<div style="padding:0">
+
+
+
+<header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px">
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 84px; line-height: 0.9">Gimnasio<span style="display: block; font-family: 'Instrument Sans', sans-serif; font-size: 15px; color: var(--mute); margin-top: 10px; line-height: 1.4">Semana del 5 al 11 de octubre · 2 de 4 sesiones hechas</span></h1>
+<div style="display: flex; gap: 6px">
+<button aria-label="Semana anterior" style="width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: none; font-size: 18px; color: var(--ink)">‹</button>
+<button aria-label="Semana siguiente" style="width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: none; font-size: 18px; color: var(--ink)">›</button>
+</div>
+</header>
+
+<nav aria-label="Gimnasio" style="display: flex; gap: 8px; flex-wrap: wrap; margin: -8px 0 32px">
+<a href="#gimnasio" data-gym="Main" aria-current="page" style="padding: 8px 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 14px; text-decoration: none">Entreno</a>
+<a href="#gimnasio" data-gym="Puntos" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Puntos · 1.424</a>
+<a href="#gimnasio" data-gym="Grupo" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Grupo · 2.º de 6</a>
+</nav>
+
+<section aria-labelledby="split" style="margin-bottom: 44px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px">
+<h2 id="split" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">División semanal</h2>
+<a href="#" style="font-size: 13px; text-underline-offset: 3px">Editar rutina</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; overflow-x: auto">
+
+<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; background: var(--ink); color: var(--paper);">
+<div style="font-size: 12px; opacity: 0.7">Lun ✓</div>
+<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Push</div>
+<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Pecho · hombro</div>
+</div>
+
+<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; background: var(--soft); box-shadow: inset 0 0 0 2px var(--ink); color: var(--ink);">
+<div style="font-size: 12px; opacity: 0.7">Mar · hoy</div>
+<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Pull</div>
+<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Espalda · bíceps</div>
+</div>
+
+<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px dashed var(--l1); color: var(--mute);">
+<div style="font-size: 12px; opacity: 0.7">Mié</div>
+<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Descanso</div>
+<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Caminar</div>
+</div>
+
+<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px solid var(--line); color: var(--ink);">
+<div style="font-size: 12px; opacity: 0.7">Jue</div>
+<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Pierna</div>
+<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Cuádriceps · glúteo</div>
+</div>
+
+<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px solid var(--line); color: var(--ink);">
+<div style="font-size: 12px; opacity: 0.7">Vie</div>
+<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Torso</div>
+<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Fuerza</div>
+</div>
+
+<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px solid var(--line); color: var(--ink);">
+<div style="font-size: 12px; opacity: 0.7">Sáb</div>
+<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Cardio</div>
+<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">30 min</div>
+</div>
+
+<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px dashed var(--l1); color: var(--mute);">
+<div style="font-size: 12px; opacity: 0.7">Dom</div>
+<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Descanso</div>
+<div style="font-size: 12px; opacity: 0.75; margin-top: 4px"></div>
+</div>
+
+</div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+
+<section aria-labelledby="today" style="flex: 999 1 560px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 16px">
+<div>
+<h2 id="today" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Hoy · Pull</h2>
+<p style="margin: 2px 0 0; font-size: 13px; color: var(--mute)">Martes 6 de octubre · espalda y bíceps</p>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; border: 1px solid var(--ink); border-radius: 999px; padding: 6px 6px 6px 18px">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; font-variant-numeric: tabular-nums; line-height: 1">00:47:12</span>
+<button style="background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px">Terminar sesión</button>
+</div>
+</div>
+
+<div style="border-top: 1px solid var(--line)">
+
+<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
+<h3 style="margin: 0; font-size: 16px; font-weight: 500">Dominadas</h3>
+<span style="font-size: 12px; color: var(--mute); white-space: nowrap">4 × 6–8 · peso corporal</span>
+</div>
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
+<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">1</span>
+<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="8" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">+0 × 8</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">2</span>
+<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="7" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">+0 × 7</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">3</span>
+<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="6" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">+0 × 6</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">4</span>
+<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">+0 × 6</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+</article>
+
+<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
+<h3 style="margin: 0; font-size: 16px; font-weight: 500">Remo con barra</h3>
+<span style="font-size: 12px; color: var(--mute); white-space: nowrap">4 × 8–10</span>
+</div>
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
+<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">1</span>
+<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="10" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">67,5 × 10</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">2</span>
+<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="9" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">67,5 × 9</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">3</span>
+<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">67,5 × 9</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">4</span>
+<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">67,5 × 8</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+</article>
+
+<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
+<h3 style="margin: 0; font-size: 16px; font-weight: 500">Jalón al pecho</h3>
+<span style="font-size: 12px; color: var(--mute); white-space: nowrap">3 × 10–12</span>
+</div>
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
+<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">1</span>
+<input aria-label="Kilos" value="55" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">52,5 × 12</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">2</span>
+<input aria-label="Kilos" value="55" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">52,5 × 11</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">3</span>
+<input aria-label="Kilos" value="55" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">52,5 × 10</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+</article>
+
+<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
+<h3 style="margin: 0; font-size: 16px; font-weight: 500">Curl con barra Z</h3>
+<span style="font-size: 12px; color: var(--mute); white-space: nowrap">3 × 10–12</span>
+</div>
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
+<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">1</span>
+<input aria-label="Kilos" value="30" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">27,5 × 12</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">2</span>
+<input aria-label="Kilos" value="30" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">27,5 × 11</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">3</span>
+<input aria-label="Kilos" value="30" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">27,5 × 10</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+</article>
+
+<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
+<h3 style="margin: 0; font-size: 16px; font-weight: 500">Face pull</h3>
+<span style="font-size: 12px; color: var(--mute); white-space: nowrap">3 × 15</span>
+</div>
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
+<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">1</span>
+<input aria-label="Kilos" value="20" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">20 × 15</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">2</span>
+<input aria-label="Kilos" value="20" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">20 × 15</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
+<span style="font-size: 13px; color: var(--mute)">3</span>
+<input aria-label="Kilos" value="20" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
+<span style="font-size: 13px; color: var(--mute)">20 × 14</span>
+<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
+</div>
+
+</article>
+
+</div>
+<button style="margin-top: 16px; width: 100%; border: 1.5px dashed var(--l2); border-radius: 10px; background: none; padding: 14px; font: inherit; font-size: 14px; color: var(--mute)">+ Añadir ejercicio</button>
+<label style="display: block; font-size: 13px; color: var(--mute); margin: 22px 0 6px" for="gnote">Notas de la sesión</label>
+<textarea id="gnote" style="width: 100%; box-sizing: border-box; min-height: 72px; border: 1px solid var(--line); border-radius: 8px; background: transparent; font: inherit; padding: 10px 12px; color: var(--ink)">Dominadas mejor que la semana pasada. Remo con molestia leve en el codo.</textarea>
+</section>
+
+<aside style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden">
+<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">2/4</strong><span style="font-size: 12px; color: var(--mute)">Sesiones esta semana</span></div>
+<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">2h 41m</strong><span style="font-size: 12px; color: var(--mute)">Tiempo entrenado</span></div>
+<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">18.420</strong><span style="font-size: 12px; color: var(--mute)">Kg movidos (volumen)</span></div>
+<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">78,4</strong><span style="font-size: 12px; color: var(--mute)">Peso corporal (kg)</span></div>
+</div>
+
+<div>
+<h2 style="margin: 0 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Récords personales</h2>
+
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
+<span>Sentadilla</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">110 kg × 5</strong> <span style="color: var(--mute); font-size: 12px">28 sep</span></span>
+</div>
+
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
+<span>Press banca</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">82,5 kg × 5</strong> <span style="color: var(--mute); font-size: 12px">5 oct</span></span>
+</div>
+
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
+<span>Peso muerto</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">135 kg × 3</strong> <span style="color: var(--mute); font-size: 12px">19 sep</span></span>
+</div>
+
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
+<span>Dominadas</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">+10 kg × 5</strong> <span style="color: var(--mute); font-size: 12px">22 sep</span></span>
+</div>
+
+</div>
+
+<div>
+<h2 style="margin: 0 0 4px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Press banca</h2>
+<p style="margin: 0 0 12px; font-size: 12px; color: var(--mute)">Mejor serie por semana · últimas 8 semanas</p>
+<div style="display: flex; align-items: flex-end; gap: 6px; height: 110px; border-bottom: 1px solid var(--line)">
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">72,5</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 30px; background: var(--l2);"></div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">75</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 40px; background: var(--l2);"></div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">75</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 40px; background: var(--l2);"></div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">77,5</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 50px; background: var(--l2);"></div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">77,5</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 50px; background: var(--l2);"></div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">80</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 60px; background: var(--l2);"></div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">80</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 60px; background: var(--l2);"></div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
+<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">82,5</span>
+<div style="width: 100%; border-radius: 3px 3px 0 0; height: 70px; background: var(--ink);"></div>
+</div>
+
+</div>
+</div>
+
+<div>
+<h2 style="margin: 0 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Historial</h2>
+
+<div style="padding: 10px 0; border-bottom: 1px solid var(--line)">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px"><span style="font-weight: 500">Push</span><span style="color: var(--mute); font-size: 12px">Lun 5 oct</span></div>
+<div style="font-size: 12px; color: var(--mute)">1h 12m · 6 ejercicios · 7.940 kg</div>
+</div>
+
+<div style="padding: 10px 0; border-bottom: 1px solid var(--line)">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px"><span style="font-weight: 500">Torso</span><span style="color: var(--mute); font-size: 12px">Vie 2 oct</span></div>
+<div style="font-size: 12px; color: var(--mute)">1h 05m · 5 ejercicios · 8.310 kg</div>
+</div>
+
+<div style="padding: 10px 0; border-bottom: 1px solid var(--line)">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px"><span style="font-weight: 500">Pierna</span><span style="color: var(--mute); font-size: 12px">Jue 1 oct</span></div>
+<div style="font-size: 12px; color: var(--mute)">1h 20m · 5 ejercicios · 11.200 kg</div>
+</div>
+
+</div>
+</aside>
+
+</div>
+</div>
+</div>
+</div><div class="gympage" data-page="Puntos" hidden>
+
+<div style="background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.5; ">
+<div style="padding:0">
+
+
+
+<header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px">
+<div>
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 84px; line-height: 0.9; font-variant-numeric: tabular-nums">1.424<span style="font-family: 'Instrument Sans', sans-serif; font-size: 18px; color: var(--mute); margin-left: 10px">pts esta semana</span></h1>
+<p style="margin: 12px 0 0; font-size: 15px; color: var(--mute)">Incluye 150 pts de bonus (sesión completada y récord) · Total acumulado: 18.940 pts</p>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; border: 1px solid var(--ink); border-radius: 999px; padding: 8px 16px; font-size: 14px">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1">×1,2</span>
+<span>Multiplicador por racha · 3 semanas cumpliendo tu plan</span>
+</div>
+</header>
+
+<nav aria-label="Gimnasio" style="display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 36px">
+<a href="#gimnasio" data-gym="Main" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Entreno</a>
+<a href="#gimnasio" data-gym="Puntos" aria-current="page" style="padding: 8px 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 14px; text-decoration: none">Puntos · 1.424</a>
+<a href="#gimnasio" data-gym="Grupo" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Grupo · 2.º de 6</a>
+</nav>
+
+<section aria-labelledby="src" style="margin-bottom: 44px">
+<h2 id="src" style="margin: 0 0 14px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">De dónde salen tus puntos</h2>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden">
+
+<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-size: 13px; color: var(--mute)">Kilos levantados</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">614</strong>
+<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 48%;"></div></div>
+<span style="font-size: 12px; color: var(--mute)">18.420 kg de volumen</span>
+</div>
+
+<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-size: 13px; color: var(--mute)">Repeticiones</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">186</strong>
+<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 15%;"></div></div>
+<span style="font-size: 12px; color: var(--mute)">372 reps con peso corporal</span>
+</div>
+
+<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-size: 13px; color: var(--mute)">Kilómetros</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">384</strong>
+<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 30%;"></div></div>
+<span style="font-size: 12px; color: var(--mute)">10,4 km corriendo y 7,2 km en bici</span>
+</div>
+
+<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-size: 13px; color: var(--mute)">Pisos subidos</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">90</strong>
+<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 7%;"></div></div>
+<span style="font-size: 12px; color: var(--mute)">45 pisos por escaleras</span>
+</div>
+
+</div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+
+<section aria-labelledby="rules" style="flex: 1 1 380px; min-width: 0">
+<h2 id="rules" style="margin: 0 0 4px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Cómo se puntúa</h2>
+<p style="margin: 0 0 14px; font-size: 13px; color: var(--mute)">Las mismas reglas para todos los miembros del grupo.</p>
+<div style="border-top: 1px solid var(--line)">
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<div><div style="font-size: 15px; font-weight: 500">Kilos levantados</div><div style="font-size: 12px; color: var(--mute)">kg × repeticiones de cada serie marcada como hecha</div></div>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">1 pt / 30 kg</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<div><div style="font-size: 15px; font-weight: 500">Repeticiones con peso corporal</div><div style="font-size: 12px; color: var(--mute)">Dominadas, flexiones, fondos… solo series completas</div></div>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">1 pt / 2 reps</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<div><div style="font-size: 15px; font-weight: 500">Correr o caminar</div><div style="font-size: 12px; color: var(--mute)">Distancia registrada en la sesión</div></div>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">30 pts / km</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<div><div style="font-size: 15px; font-weight: 500">Bicicleta</div><div style="font-size: 12px; color: var(--mute)">Exterior o estática</div></div>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">10 pts / km</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<div><div style="font-size: 15px; font-weight: 500">Pisos subidos</div><div style="font-size: 12px; color: var(--mute)">Escaleras, a pie</div></div>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">2 pts / piso</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<div><div style="font-size: 15px; font-weight: 500">Sesión completada</div><div style="font-size: 12px; color: var(--mute)">Todas las series del día marcadas</div></div>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">+50 pts</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
+<div><div style="font-size: 15px; font-weight: 500">Récord personal</div><div style="font-size: 12px; color: var(--mute)">Mejor marca en cualquier ejercicio</div></div>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">+100 pts</strong>
+</div>
+
+</div>
+<div style="margin-top: 18px; padding: 16px 18px; border: 1px dashed var(--l2); border-radius: 12px; font-size: 13px; color: var(--l3)">
+<strong style="color: var(--ink); font-weight: 500">Modo justo para competir:</strong> los kilos se ajustan a tu peso corporal, así que mover 100 kg pesando 60 kg vale más que pesando 90 kg.
+</div>
+</section>
+
+<section aria-labelledby="add" style="flex: 1 1 420px; min-width: 0">
+<h2 id="add" style="margin: 0 0 14px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Añadir actividad</h2>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px">
+
+<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: inherit; font-size: 14px; min-height: 44px;">Correr</button>
+
+<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 14px; min-height: 44px;">Bicicleta</button>
+
+<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 14px; min-height: 44px;">Pisos</button>
+
+<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 14px; min-height: 44px;">Repeticiones</button>
+
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--mute)">Kilómetros<input value="5,2" style="border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: inherit; font-size: 16px; color: var(--ink); background: transparent"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--mute)">Minutos<input value="28" style="border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: inherit; font-size: 16px; color: var(--ink); background: transparent"></label>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap">
+<span style="font-size: 14px">Vas a sumar <strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 26px">+156 pts</strong></span>
+<button style="background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 12px 22px; font: inherit; font-size: 14px">Guardar actividad</button>
+</div>
+
+<h2 style="margin: 36px 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Últimos puntos</h2>
+<div style="border-top: 1px solid var(--line)">
+
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
+<span style="font-size: 12px; color: var(--mute)">Hoy</span>
+<span>Pull · 4 ejercicios · 6.120 kg</span>
+<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+254</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
+<span style="font-size: 12px; color: var(--mute)">Hoy</span>
+<span>Dominadas · 21 reps</span>
+<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+11</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
+<span style="font-size: 12px; color: var(--mute)">Lun</span>
+<span>Carrera · 5,2 km</span>
+<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+156</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
+<span style="font-size: 12px; color: var(--mute)">Lun</span>
+<span>Escaleras · 15 pisos</span>
+<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+30</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
+<span style="font-size: 12px; color: var(--mute)">Lun</span>
+<span>Récord · Press banca 82,5 kg × 5</span>
+<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+100</strong>
+</div>
+
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
+<span style="font-size: 12px; color: var(--mute)">Lun</span>
+<span>Push completado · bonus</span>
+<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+50</strong>
+</div>
+
+</div>
+</section>
+
+</div>
+</div>
+</div>
+</div><div class="gympage" data-page="Grupo" hidden>
+
+<div style="background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.5; ">
+<div style="padding:0">
+
+
+
+<header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px">
+<div>
+<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 72px; line-height: 0.95">Erasmus Gym Club</h1>
+<p style="margin: 12px 0 0; font-size: 15px; color: var(--mute)">6 miembros · Liga semanal del 12 al 18 de octubre · cierra el domingo a las 23:59</p>
+</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<button style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 12px 18px; font: inherit; font-size: 14px; color: var(--ink)">Código: GYM-4K7Q</button>
+<button style="background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 12px 20px; font: inherit; font-size: 14px">Invitar amigos</button>
+</div>
+</header>
+
+<nav aria-label="Gimnasio" style="display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 36px">
+<a href="#gimnasio" data-gym="Main" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Entreno</a>
+<a href="#gimnasio" data-gym="Puntos" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Puntos · 1.424</a>
+<a href="#gimnasio" data-gym="Grupo" aria-current="page" style="padding: 8px 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 14px; text-decoration: none">Grupo · 2.º de 6</a>
+</nav>
+
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+
+<section aria-labelledby="league" style="flex: 999 1 540px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px">
+<h2 id="league" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Clasificación de la semana</h2>
+<div style="display: flex; gap: 6px">
+
+<button style="padding: 8px 14px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: inherit; font-size: 13px; min-height: 40px;">Puntos</button>
+
+<button style="padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 13px; min-height: 40px;">Kilos</button>
+
+<button style="padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 13px; min-height: 40px;">Km</button>
+
+</div>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line)">
+
+<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">1</span>
+<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">LU</span>
+<div style="min-width: 0; flex: 1">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 15px; font-weight: 500">Lukas</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">1522</strong>
+</div>
+<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 100%; background: var(--ink);"></div></div>
+<span style="font-size: 12px; color: var(--mute)">4 sesiones · racha ×1,3</span>
+</div>
+</li>
+
+<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line); background: var(--soft);">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">2</span>
+<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--ink); color: var(--paper);">TÚ</span>
+<div style="min-width: 0; flex: 1">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 15px; font-weight: 500">Tú</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">1424</strong>
+</div>
+<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 94%; background: var(--l2);"></div></div>
+<span style="font-size: 12px; color: var(--mute)">3 sesiones · racha ×1,2</span>
+</div>
+</li>
+
+<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">3</span>
+<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">MA</span>
+<div style="min-width: 0; flex: 1">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 15px; font-weight: 500">Marta</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">1190</strong>
+</div>
+<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 78%; background: var(--l2);"></div></div>
+<span style="font-size: 12px; color: var(--mute)">5 sesiones · racha ×1,1</span>
+</div>
+</li>
+
+<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">4</span>
+<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">PA</span>
+<div style="min-width: 0; flex: 1">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 15px; font-weight: 500">Pablo</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">965</strong>
+</div>
+<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 63%; background: var(--l2);"></div></div>
+<span style="font-size: 12px; color: var(--mute)">2 sesiones</span>
+</div>
+</li>
+
+<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">5</span>
+<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">SO</span>
+<div style="min-width: 0; flex: 1">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 15px; font-weight: 500">Sofía</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">810</strong>
+</div>
+<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 53%; background: var(--l2);"></div></div>
+<span style="font-size: 12px; color: var(--mute)">3 sesiones</span>
+</div>
+</li>
+
+<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">6</span>
+<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">JO</span>
+<div style="min-width: 0; flex: 1">
+<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
+<span style="font-size: 15px; font-weight: 500">Jonas</span>
+<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">402</strong>
+</div>
+<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 26%; background: var(--l2);"></div></div>
+<span style="font-size: 12px; color: var(--mute)">1 sesión</span>
+</div>
+</li>
+
+</ol>
+<p style="margin: 14px 0 0; font-size: 13px; color: var(--mute)">Te faltan 98 pts para pasar a Lukas. Un entreno completo de pierna suele dar unos 300.</p>
+
+<h2 style="margin: 44px 0 12px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Actividad del grupo</h2>
+<div style="border-top: 1px solid var(--line)">
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
+<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">MA</span>
+<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Marta</strong> corrió 10,4 km y sumó 312 pts<div style="font-size: 12px; color: var(--mute)">Hace 1 hora</div></div>
+<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 3</button>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
+<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">LU</span>
+<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Lukas</strong> batió su récord en sentadilla: 140 kg × 3<div style="font-size: 12px; color: var(--mute)">Hace 3 horas</div></div>
+<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 5</button>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
+<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">TÚ</span>
+<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Tú</strong> completaste Pull y sumaste 265 pts<div style="font-size: 12px; color: var(--mute)">Hoy, 10:47</div></div>
+<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 2</button>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
+<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">SO</span>
+<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Sofía</strong> subió 22 pisos y sumó 44 pts<div style="font-size: 12px; color: var(--mute)">Ayer</div></div>
+<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 1</button>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
+<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">PA</span>
+<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Pablo</strong> se unió al reto “Rey de las dominadas”<div style="font-size: 12px; color: var(--mute)">Ayer</div></div>
+<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo</button>
+</div>
+
+</div>
+</section>
+
+<aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<div>
+<h2 style="margin: 0 0 12px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Retos activos</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+
+<article style="border: 1px solid var(--line); border-radius: 12px; padding: 16px">
+<div style="display: flex; justify-content: space-between; gap: 10px; align-items: baseline"><h3 style="margin: 0; font-size: 15px; font-weight: 500">100 km en octubre</h3><span style="font-size: 12px; color: var(--mute); white-space: nowrap">17 días</span></div>
+<p style="margin: 4px 0 10px; font-size: 12px; color: var(--mute)">Corriendo, andando o en bici. Reto de equipo.</p>
+<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 64%;"></div></div>
+<div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px"><span>Grupo: 64 de 100 km</span><span style="color: var(--mute)">Tú aportas 17,6 km</span></div>
+</article>
+
+<article style="border: 1px solid var(--line); border-radius: 12px; padding: 16px">
+<div style="display: flex; justify-content: space-between; gap: 10px; align-items: baseline"><h3 style="margin: 0; font-size: 15px; font-weight: 500">Rey de las dominadas</h3><span style="font-size: 12px; color: var(--mute); white-space: nowrap">4 días</span></div>
+<p style="margin: 4px 0 10px; font-size: 12px; color: var(--mute)">Más dominadas acumuladas esta semana.</p>
+<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 72%;"></div></div>
+<div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px"><span>Tú: 58 reps</span><span style="color: var(--mute)">Lidera Lukas con 81</span></div>
+</article>
+
+<article style="border: 1px solid var(--line); border-radius: 12px; padding: 16px">
+<div style="display: flex; justify-content: space-between; gap: 10px; align-items: baseline"><h3 style="margin: 0; font-size: 15px; font-weight: 500">500 pisos</h3><span style="font-size: 12px; color: var(--mute); white-space: nowrap">17 días</span></div>
+<p style="margin: 4px 0 10px; font-size: 12px; color: var(--mute)">Escaleras en lugar de ascensor durante el mes.</p>
+<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 31%;"></div></div>
+<div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px"><span>Grupo: 156 de 500</span><span style="color: var(--mute)">Lidera Sofía con 62</span></div>
+</article>
+
+</div>
+<button style="margin-top: 12px; width: 100%; border: 1.5px dashed var(--l2); border-radius: 10px; background: none; padding: 14px; font: inherit; font-size: 14px; color: var(--l3)">+ Crear reto</button>
+</div>
+
+<div style="border: 1px solid var(--ink); border-radius: 12px; padding: 18px">
+<h2 style="margin: 0 0 6px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px">Duelo 1 contra 1</h2>
+<p style="margin: 0 0 14px; font-size: 13px; color: var(--l3)">Reta a un amigo a quién suma más puntos en 7 días. El ganador se lleva +200 pts.</p>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; text-align: center">
+<div><div style="font-size: 13px; color: var(--mute)">Tú</div><div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1">1.424</div></div>
+<span style="font-size: 13px; color: var(--mute)">vs</span>
+<div><div style="font-size: 13px; color: var(--mute)">Marta</div><div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1">1.190</div></div>
+</div>
+<p style="margin: 10px 0 0; font-size: 12px; color: var(--mute); text-align: center">Quedan 4 días</p>
+</div>
+
+<div>
+<h2 style="margin: 0 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px">Reglas del grupo</h2>
+<ul style="margin: 0; padding-left: 18px; font-size: 13px; color: var(--l3); display: flex; flex-direction: column; gap: 6px">
+<li>Modo justo activado: kilos ajustados al peso corporal.</li>
+<li>Máximo 1.000 pts por sesión para evitar errores al anotar.</li>
+<li>Un récord nuevo necesita el visto bueno de otro miembro.</li>
+<li>Solo se comparten puntos y sesiones, nunca tu peso ni tus notas.</li>
+</ul>
+</div>
+</aside>
+
+</div>
+</div>
+</div>
+</div></div>
   <div class="foot">
     <span id="saveState">Cargando…</span>
     <span style="display:flex;gap:16px;flex-wrap:wrap"><button class="lnk" id="bkBtn">Copia de seguridad</button><button class="lnk" id="editBtn">Editar objetivos</button></span>
@@ -397,6 +1762,7 @@ function renderMonth(){
       for(let j=0;j<inf.total;j++){const i=document.createElement("i");if(j<inf.done.length)i.className="on";p.appendChild(i)}
       if(s!=="done"&&s!=="none")b.appendChild(p);
       if(inf.note){const nd=document.createElement("span");nd.className="nd";b.appendChild(nd)}
+if(pinsOn(k).length){const pm=document.createElement("span");pm.className="pinm";b.appendChild(pm)}
       b.onclick=()=>{sel=k;renderAll()};
     }else b.disabled=true;
     g.appendChild(b);
@@ -430,10 +1796,37 @@ renderTasks();
 }
 const CHECK='<span class="box"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg></span><span class="t"></span>';
 function dayTasks(k){const d=state.days[k];return d&&Array.isArray(d.tasks)?d.tasks:[]}
+const pins=()=>(state.pins=state.pins||[]);
+const pinsOn=k=>pins().filter(p=>p.start<=k&&k<=p.end);
+let repOpt="today",repN=7;
+const DSHORT=["dom","lun","mar","mié","jue","vie","sáb"];
+const fmtShort=k=>{const d=parse(k);return DSHORT[d.getDay()]+" "+d.getDate()+" "+MSHORT[d.getMonth()]};
+function repEnd(){
+  const d=parse(sel);
+  if(repOpt==="week"){const e=new Date(d);e.setDate(d.getDate()+(7-d.getDay())%7);return key(e)}
+  if(repOpt==="month"){return key(new Date(d.getFullYear(),d.getMonth()+1,0))}
+  if(repOpt==="custom"){const e=new Date(d);e.setDate(d.getDate()+repN-1);return key(e)}
+  return sel;
+}
+const spanDays=(a,b)=>Math.round((parse(b)-parse(a))/864e5)+1;
+const PIN='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.8V4h6v6.8l3 3.2v2H6v-2z"/></svg>';
 function renderTasks(){
-const list=dayTasks(sel),wrap=document.getElementById("tasks");
+const list=dayTasks(sel),pl=pinsOn(sel),wrap=document.getElementById("tasks");
 const draft=document.getElementById("newTask");const keep=draft?draft.value:"";const hadFocus=draft&&document.activeElement===draft;
 wrap.innerHTML="";
+pl.forEach(p=>{
+const on=!!(p.done&&p.done[sel]);
+const row=document.createElement("div");row.className="task";
+const b=document.createElement("button");b.className="obj"+(on?" on":"");b.setAttribute("aria-pressed",on);
+b.innerHTML='<span class="box"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg></span><span><span class="t"></span><span class="pinb">'+PIN+'<span></span></span></span>';
+b.querySelector(".t").textContent=p.text;
+const n=spanDays(p.start,p.end),i=spanDays(p.start,sel);
+b.querySelector(".pinb span").textContent="Fijada · día "+i+" de "+n+" · hasta "+fmtShort(p.end);
+b.onclick=()=>{p.done=p.done||{};if(p.done[sel])delete p.done[sel];else p.done[sel]=true;persist();renderTasks()};
+const x=document.createElement("button");x.className="tdel";x.textContent="×";x.setAttribute("aria-label","Quitar tarea fijada: "+p.text);
+x.onclick=()=>{if(confirm("¿Quitar «"+p.text+"» de todos sus días ("+fmtShort(p.start)+" – "+fmtShort(p.end)+")?")){state.pins=pins().filter(y=>y!==p);persist();renderAll()}};
+row.appendChild(b);row.appendChild(x);wrap.appendChild(row);
+});
 list.forEach(t=>{
 const row=document.createElement("div");row.className="task";
 const b=document.createElement("button");b.className="obj"+(t.done?" on":"");b.setAttribute("aria-pressed",!!t.done);b.innerHTML=CHECK;b.querySelector(".t").textContent=t.text;
@@ -445,19 +1838,27 @@ row.appendChild(b);row.appendChild(x);wrap.appendChild(row);
 const nr=document.createElement("label");nr.className="newtask";
 nr.innerHTML='<span class="box" aria-hidden="true">+</span><input id="newTask" placeholder="Nueva tarea" autocomplete="off" maxlength="140" enterkeyhint="done">';
 wrap.appendChild(nr);
+const end=repEnd(),len=spanDays(sel,end);
+const rep=document.createElement("div");rep.className="rep";
+rep.innerHTML='<div class="rl">Repetir esta tarea</div><div class="chips2"></div>'+(repOpt==="custom"?'<div class="stp"><button type="button" data-s="-1" aria-label="Un día menos">−</button><strong>'+repN+'</strong><button type="button" data-s="1" aria-label="Un día más">+</button><span style="font-size:13px;color:var(--mute)">días</span></div>':'')+'<div class="sum"></div>';
+[["today","Solo hoy"],["week","Resto de la semana"],["month","Resto del mes"],["custom","Nº de días"]].forEach(([id,l])=>{const c=document.createElement("button");c.type="button";c.textContent=l;c.setAttribute("aria-pressed",repOpt===id);c.onclick=()=>{repOpt=id;renderTasks()};rep.querySelector(".chips2").appendChild(c)});
+rep.querySelectorAll("[data-s]").forEach(c=>c.onclick=()=>{repN=Math.max(2,Math.min(60,repN+Number(c.dataset.s)));renderTasks()});
+rep.querySelector(".sum").textContent=len===1?"Solo aparecerá este día. Escribe la tarea y pulsa Enter.":"Aparecerá "+len+" días: del "+fmtShort(sel)+" al "+fmtShort(end)+". Escribe la tarea y pulsa Enter.";
+wrap.appendChild(rep);
 const inp=document.getElementById("newTask");inp.value=keep;
 inp.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();addTask(inp.value)}};
 if(hadFocus)inp.focus();
-const done=list.filter(t=>t.done).length;
-document.getElementById("tCount").textContent=list.length?done+" de "+list.length:"";
+const total=list.length+pl.length,done=list.filter(t=>t.done).length+pl.filter(p=>p.done&&p.done[sel]).length;
+document.getElementById("tCount").textContent=total?done+" de "+total:"";
 }
 function addTask(text){
 text=String(text||"").trim();if(!text)return;
-const d=ensureDay(sel);if(!Array.isArray(d.tasks))d.tasks=[];
-d.tasks.push({id:"t"+Date.now().toString(36)+Math.random().toString(36).slice(2,5),text,done:false});
+const end=repEnd();
+if(end!==sel){pins().push({id:"p"+Date.now().toString(36)+Math.random().toString(36).slice(2,5),text,start:sel,end,done:{}});ensureDay(sel);toast("Tarea fijada "+spanDays(sel,end)+" días, hasta el "+fmtShort(end));repOpt="today"}
+else{const d=ensureDay(sel);if(!Array.isArray(d.tasks))d.tasks=[];d.tasks.push({id:"t"+Date.now().toString(36)+Math.random().toString(36).slice(2,5),text,done:false})}
 persist();
 const inp=document.getElementById("newTask");if(inp)inp.value="";
-renderTasks();
+renderAll();
 const i2=document.getElementById("newTask");if(i2)i2.focus();
 }
 
@@ -800,7 +2201,7 @@ document.getElementById("bDel").onclick=()=>{
   if(b&&confirm("¿Eliminar «"+b.title+"» y su historial de lectura?")){state.books=books().filter(x=>x.id!==editing);persist();bdlg.close();renderBooks()}
 };
 
-const VIEWS={goals:["vGoals",""],stats:["vStats","estadisticas"],game:["vGame","rachas"],books:["vBooks","libros"]};
+const VIEWS={goals:["vGoals",""],week:["vWeek","semana"],gym:["vGym","gimnasio"],books:["vBooks","libros"],stats:["vStats","estadisticas"],game:["vGame","rachas"]};
 function showView(v){
   if(!VIEWS[v])v="goals";
   Object.entries(VIEWS).forEach(([k,[id]])=>document.getElementById(id).hidden=k!==v);
@@ -813,6 +2214,7 @@ function showView(v){
 document.getElementById("sPrev").onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderAll()};
 document.getElementById("sNext").onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderAll()};
 document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>showView(b.dataset.view));
+document.querySelectorAll("[data-gym]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.querySelectorAll(".gympage").forEach(p=>p.hidden=p.dataset.page!==a.dataset.gym);try{window.scrollTo(0,0)}catch(_){}}));
 
 /* ---------- Copia de seguridad ---------- */
 const kdlg=document.getElementById("kdlg"),kTxt=document.getElementById("kTxt"),kMsg=document.getElementById("kMsg");
@@ -830,7 +2232,7 @@ document.getElementById("kRestore").onclick=()=>{
   let d;try{d=JSON.parse(kTxt.value)}catch(e){kMsg.textContent="El texto no es una copia válida.";return}
   if(!d||typeof d!=="object"||!d.days||!Array.isArray(d.objectives)){kMsg.textContent="El texto no es una copia válida.";return}
   if(!confirm("Esto sustituirá los datos actuales por los de la copia. ¿Continuar?"))return;
-  state=Object.assign({objectives:[],days:{},start:TK,books:[]},d);
+  state=Object.assign({objectives:[],days:{},start:TK,books:[],pins:[]},d);
   persist();renderAll.ready=false;renderAll();kdlg.close();toast("Datos restaurados");
 };
 
