@@ -92,7 +92,7 @@ textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line)
 .newtask .box{border-style:dashed;border-color:var(--l2);color:var(--l2);font-size:16px;line-height:1}
 .newtask input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:4px 0}
 .newtask input::placeholder{color:var(--mute)}
-#vGym a{color:var(--ink)}
+
 #vGym input,#vGym textarea{color:var(--ink)}
 .rep{padding:10px 0 14px;border-bottom:1px solid var(--line)}
 .rep .rl{font-size:12px;color:var(--mute);margin-bottom:8px}
@@ -185,6 +185,77 @@ dialog input{width:100%;border:0;border-bottom:1px solid var(--line);background:
 .btn{border:1px solid var(--ink);border-radius:999px;padding:8px 18px}
 .btn.fill{background:var(--ink);color:var(--paper)}
 @media (prefers-reduced-motion:reduce){.cell{transition:none}}
+/* ---------- Gimnasio ---------- */
+#vGym .gsub{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 32px}
+#vGym .pill{padding:8px 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;min-height:40px}
+#vGym .pill.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#vGym .gh2{font:400 28px/1.1 "Instrument Serif",Georgia,serif;margin:0}
+#vGym .gmute{color:var(--mute);font-size:13px}
+#vGym .gbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);font-size:14px}
+#vGym .gbtn:hover{border-color:var(--ink)}
+#vGym .gbtn.fill{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#vGym .gbtn.dash{border:1.5px dashed var(--l2);color:var(--mute);width:100%;border-radius:10px}
+#vGym .gbtn.sm{min-height:34px;padding:0 12px;font-size:13px}
+#vGym .glink{font-size:13px;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+#vGym .gweek{display:grid;grid-template-columns:repeat(7,minmax(84px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px}
+#vGym .gday{border-radius:10px;padding:12px 12px 14px;min-height:118px;text-align:left;border:1px solid var(--line);display:flex;flex-direction:column}
+#vGym .gday .dw{font-size:12px;opacity:.75}
+#vGym .gday .dn{font:400 22px/1.05 "Instrument Serif",Georgia,serif;margin-top:16px}
+#vGym .gday .ds{font-size:12px;opacity:.75;margin-top:4px}
+#vGym .gday.rest{border-style:dashed;color:var(--mute)}
+#vGym .gday.done{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#vGym .gday.today{box-shadow:inset 0 0 0 2px var(--ink)}
+#vGym .gday.sel{outline:2px solid var(--ink);outline-offset:2px}
+#vGym .gcols{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;margin-top:40px}
+#vGym .gmain{flex:999 1 540px;min-width:0}
+#vGym .gside{flex:1 1 290px;min-width:0;display:flex;flex-direction:column;gap:28px}
+#vGym .gtimer{display:flex;align-items:center;gap:12px;border:1px solid var(--ink);border-radius:999px;padding:5px 5px 5px 18px}
+#vGym .gtimer span{font:400 28px/1 "Instrument Serif",Georgia,serif;font-variant-numeric:tabular-nums}
+#vGym .gex{border-bottom:1px solid var(--line);padding:16px 0}
+#vGym .gexh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+#vGym .gexh h3{margin:0;font-size:16px;font-weight:500}
+#vGym .gset{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr) 44px;gap:8px;align-items:center;padding:3px 0;font-variant-numeric:tabular-nums}
+#vGym .gset.hd{font-size:12px;color:var(--mute)}
+#vGym .gset input{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 10px;background:transparent;color:var(--ink);font:inherit;min-width:0}
+#vGym .gset input:focus{outline:none;border-color:var(--ink)}
+#vGym .gchk{width:44px;height:38px;border-radius:8px;border:1.5px solid var(--ink);display:grid;place-items:center;color:transparent}
+#vGym .gchk.on{background:var(--ink);color:var(--paper)}
+#vGym .gx{color:var(--mute);font-size:18px;width:32px;height:32px;border-radius:50%}
+#vGym .gx:hover{color:var(--fail)}
+#vGym textarea.gta{width:100%;min-height:72px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink);font:inherit;padding:10px 12px;resize:vertical}
+#vGym .gkpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#vGym .gkpi>*{background:var(--paper);padding:16px;text-align:left}
+#vGym .gkpi strong{display:block;font:400 34px/1.05 "Instrument Serif",Georgia,serif;font-variant-numeric:tabular-nums}
+#vGym .gkpi span{font-size:12px;color:var(--mute)}
+#vGym .grow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;align-items:baseline}
+#vGym .gsrc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+@media (max-width:640px){#vGym .gsrc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#vGym .gsrc>div{background:var(--paper);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+#vGym .gsrc strong{font:400 40px/1 "Instrument Serif",Georgia,serif;font-variant-numeric:tabular-nums}
+#vGym .gbar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
+#vGym .gbar i{display:block;height:100%;background:var(--ink)}
+#vGym .gform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#vGym .gform label,#vGym .gfield{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--mute)}
+#vGym .gform input,#vGym .gfield input,#vGym .gfield select,#vGym .gsel{border:1px solid var(--line);border-radius:8px;padding:11px 12px;font:inherit;font-size:15px;color:var(--ink);background:transparent;width:100%}
+#vGym .gcard{border:1px solid var(--line);border-radius:12px;padding:18px}
+#vGym .gcard.ink{border-color:var(--ink)}
+#vGym .glb{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+#vGym .glb li{display:flex;gap:14px;align-items:center;padding:13px 10px;border-bottom:1px solid var(--line)}
+#vGym .glb li.me{background:var(--soft)}
+#vGym .gav{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:13px;font-weight:500;background:var(--soft);border:1px solid var(--line)}
+#vGym .me .gav{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#vGym .gpos{font:400 28px/1 "Instrument Serif",Georgia,serif;width:30px;text-align:center}
+#vGym .gcode{font-family:ui-monospace,Menlo,monospace;font-size:12px;word-break:break-all;background:var(--soft);border-radius:8px;padding:10px 12px;color:var(--ink)}
+#vGym .gempty{border:1.5px dashed var(--l2);border-radius:12px;padding:24px;color:var(--mute);font-size:14px}
+#gDlg{width:min(620px,94vw)}
+#gDlg .gdays{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 16px}
+#gDlg .gdays button{padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:13px}
+#gDlg .gdays button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#gDlg .gr{display:grid;grid-template-columns:minmax(0,1fr) 64px 84px 112px 32px;gap:6px;align-items:center;margin-bottom:6px}
+#gDlg .gr input,#gDlg .gr select{border:1px solid var(--line);border-radius:8px;padding:8px;margin:0;font:inherit;font-size:14px;background:transparent;color:var(--ink);width:100%}
+#gDlg .gr.hd{font-size:12px;color:var(--mute)}
+#gDlg label{display:block;font-size:12px;color:var(--mute);margin-top:8px}
+@media (max-width:560px){#gDlg .gr{grid-template-columns:minmax(0,1fr) 52px 70px 32px}#gDlg .gr .gty{display:none}}
 </style>
 </head>
 <body>
@@ -875,781 +946,7 @@ setInterval(()=&gt;{now=new Date();if(view===&quot;today&quot;)renderNowCards();
 &lt;/body&gt;
 &lt;/html&gt;
 " style="display:block;width:100%;height:max(640px,calc(100vh - 110px));border:0;background:var(--paper)"></iframe></div>
-<div id="vGym" hidden><div class="gympage" data-page="Main">
-
-<div style="background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.5; ">
-<div style="padding:0">
-
-
-
-<header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px">
-<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 84px; line-height: 0.9">Gimnasio<span style="display: block; font-family: 'Instrument Sans', sans-serif; font-size: 15px; color: var(--mute); margin-top: 10px; line-height: 1.4">Semana del 5 al 11 de octubre · 2 de 4 sesiones hechas</span></h1>
-<div style="display: flex; gap: 6px">
-<button aria-label="Semana anterior" style="width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: none; font-size: 18px; color: var(--ink)">‹</button>
-<button aria-label="Semana siguiente" style="width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: none; font-size: 18px; color: var(--ink)">›</button>
-</div>
-</header>
-
-<nav aria-label="Gimnasio" style="display: flex; gap: 8px; flex-wrap: wrap; margin: -8px 0 32px">
-<a href="#gimnasio" data-gym="Main" aria-current="page" style="padding: 8px 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 14px; text-decoration: none">Entreno</a>
-<a href="#gimnasio" data-gym="Puntos" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Puntos · 1.424</a>
-<a href="#gimnasio" data-gym="Grupo" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Grupo · 2.º de 6</a>
-</nav>
-
-<section aria-labelledby="split" style="margin-bottom: 44px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px">
-<h2 id="split" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">División semanal</h2>
-<a href="#" style="font-size: 13px; text-underline-offset: 3px">Editar rutina</a>
-</div>
-<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; overflow-x: auto">
-
-<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; background: var(--ink); color: var(--paper);">
-<div style="font-size: 12px; opacity: 0.7">Lun ✓</div>
-<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Push</div>
-<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Pecho · hombro</div>
-</div>
-
-<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; background: var(--soft); box-shadow: inset 0 0 0 2px var(--ink); color: var(--ink);">
-<div style="font-size: 12px; opacity: 0.7">Mar · hoy</div>
-<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Pull</div>
-<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Espalda · bíceps</div>
-</div>
-
-<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px dashed var(--l1); color: var(--mute);">
-<div style="font-size: 12px; opacity: 0.7">Mié</div>
-<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Descanso</div>
-<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Caminar</div>
-</div>
-
-<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px solid var(--line); color: var(--ink);">
-<div style="font-size: 12px; opacity: 0.7">Jue</div>
-<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Pierna</div>
-<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Cuádriceps · glúteo</div>
-</div>
-
-<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px solid var(--line); color: var(--ink);">
-<div style="font-size: 12px; opacity: 0.7">Vie</div>
-<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Torso</div>
-<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">Fuerza</div>
-</div>
-
-<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px solid var(--line); color: var(--ink);">
-<div style="font-size: 12px; opacity: 0.7">Sáb</div>
-<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Cardio</div>
-<div style="font-size: 12px; opacity: 0.75; margin-top: 4px">30 min</div>
-</div>
-
-<div style="border-radius: 10px; padding: 12px 12px 14px; min-height: 120px; box-sizing: border-box; min-width: 84px; border: 1px dashed var(--l1); color: var(--mute);">
-<div style="font-size: 12px; opacity: 0.7">Dom</div>
-<div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1.05; margin-top: 18px">Descanso</div>
-<div style="font-size: 12px; opacity: 0.75; margin-top: 4px"></div>
-</div>
-
-</div>
-</section>
-
-<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
-
-<section aria-labelledby="today" style="flex: 999 1 560px; min-width: 0">
-<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 16px">
-<div>
-<h2 id="today" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Hoy · Pull</h2>
-<p style="margin: 2px 0 0; font-size: 13px; color: var(--mute)">Martes 6 de octubre · espalda y bíceps</p>
-</div>
-<div style="display: flex; align-items: center; gap: 12px; border: 1px solid var(--ink); border-radius: 999px; padding: 6px 6px 6px 18px">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; font-variant-numeric: tabular-nums; line-height: 1">00:47:12</span>
-<button style="background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px">Terminar sesión</button>
-</div>
-</div>
-
-<div style="border-top: 1px solid var(--line)">
-
-<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
-<h3 style="margin: 0; font-size: 16px; font-weight: 500">Dominadas</h3>
-<span style="font-size: 12px; color: var(--mute); white-space: nowrap">4 × 6–8 · peso corporal</span>
-</div>
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
-<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">1</span>
-<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="8" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">+0 × 8</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">2</span>
-<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="7" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">+0 × 7</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">3</span>
-<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="6" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">+0 × 6</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">4</span>
-<input aria-label="Kilos" value="+5" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">+0 × 6</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-</article>
-
-<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
-<h3 style="margin: 0; font-size: 16px; font-weight: 500">Remo con barra</h3>
-<span style="font-size: 12px; color: var(--mute); white-space: nowrap">4 × 8–10</span>
-</div>
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
-<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">1</span>
-<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="10" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">67,5 × 10</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">2</span>
-<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="9" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">67,5 × 9</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">3</span>
-<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">67,5 × 9</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">4</span>
-<input aria-label="Kilos" value="70" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">67,5 × 8</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-</article>
-
-<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
-<h3 style="margin: 0; font-size: 16px; font-weight: 500">Jalón al pecho</h3>
-<span style="font-size: 12px; color: var(--mute); white-space: nowrap">3 × 10–12</span>
-</div>
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
-<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">1</span>
-<input aria-label="Kilos" value="55" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">52,5 × 12</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">2</span>
-<input aria-label="Kilos" value="55" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">52,5 × 11</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">3</span>
-<input aria-label="Kilos" value="55" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">52,5 × 10</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-</article>
-
-<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
-<h3 style="margin: 0; font-size: 16px; font-weight: 500">Curl con barra Z</h3>
-<span style="font-size: 12px; color: var(--mute); white-space: nowrap">3 × 10–12</span>
-</div>
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
-<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">1</span>
-<input aria-label="Kilos" value="30" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">27,5 × 12</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">2</span>
-<input aria-label="Kilos" value="30" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">27,5 × 11</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">3</span>
-<input aria-label="Kilos" value="30" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">27,5 × 10</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-</article>
-
-<article style="border-bottom: 1px solid var(--line); padding: 18px 0">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
-<h3 style="margin: 0; font-size: 16px; font-weight: 500">Face pull</h3>
-<span style="font-size: 12px; color: var(--mute); white-space: nowrap">3 × 15</span>
-</div>
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; font-size: 12px; color: var(--mute); padding-bottom: 4px">
-<span>Serie</span><span>Kg</span><span>Reps</span><span>Anterior</span><span></span>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">1</span>
-<input aria-label="Kilos" value="20" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">20 × 15</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">2</span>
-<input aria-label="Kilos" value="20" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">20 × 15</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr) 44px; gap: 8px; align-items: center; padding: 4px 0; font-variant-numeric: tabular-nums">
-<span style="font-size: 13px; color: var(--mute)">3</span>
-<input aria-label="Kilos" value="20" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<input aria-label="Repeticiones" value="" style="width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; background: transparent; color: var(--ink)">
-<span style="font-size: 13px; color: var(--mute)">20 × 14</span>
-<button aria-label="Marcar serie hecha" style="width: 44px; height: 38px; border-radius: 8px; border: 1.5px solid var(--ink); background: none; color: transparent; font-size: 16px;">✓</button>
-</div>
-
-</article>
-
-</div>
-<button style="margin-top: 16px; width: 100%; border: 1.5px dashed var(--l2); border-radius: 10px; background: none; padding: 14px; font: inherit; font-size: 14px; color: var(--mute)">+ Añadir ejercicio</button>
-<label style="display: block; font-size: 13px; color: var(--mute); margin: 22px 0 6px" for="gnote">Notas de la sesión</label>
-<textarea id="gnote" style="width: 100%; box-sizing: border-box; min-height: 72px; border: 1px solid var(--line); border-radius: 8px; background: transparent; font: inherit; padding: 10px 12px; color: var(--ink)">Dominadas mejor que la semana pasada. Remo con molestia leve en el codo.</textarea>
-</section>
-
-<aside style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden">
-<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">2/4</strong><span style="font-size: 12px; color: var(--mute)">Sesiones esta semana</span></div>
-<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">2h 41m</strong><span style="font-size: 12px; color: var(--mute)">Tiempo entrenado</span></div>
-<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">18.420</strong><span style="font-size: 12px; color: var(--mute)">Kg movidos (volumen)</span></div>
-<div style="background: var(--paper); padding: 16px"><strong style="display: block; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1">78,4</strong><span style="font-size: 12px; color: var(--mute)">Peso corporal (kg)</span></div>
-</div>
-
-<div>
-<h2 style="margin: 0 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Récords personales</h2>
-
-<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
-<span>Sentadilla</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">110 kg × 5</strong> <span style="color: var(--mute); font-size: 12px">28 sep</span></span>
-</div>
-
-<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
-<span>Press banca</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">82,5 kg × 5</strong> <span style="color: var(--mute); font-size: 12px">5 oct</span></span>
-</div>
-
-<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
-<span>Peso muerto</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">135 kg × 3</strong> <span style="color: var(--mute); font-size: 12px">19 sep</span></span>
-</div>
-
-<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px">
-<span>Dominadas</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><strong style="font-weight: 500">+10 kg × 5</strong> <span style="color: var(--mute); font-size: 12px">22 sep</span></span>
-</div>
-
-</div>
-
-<div>
-<h2 style="margin: 0 0 4px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Press banca</h2>
-<p style="margin: 0 0 12px; font-size: 12px; color: var(--mute)">Mejor serie por semana · últimas 8 semanas</p>
-<div style="display: flex; align-items: flex-end; gap: 6px; height: 110px; border-bottom: 1px solid var(--line)">
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">72,5</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 30px; background: var(--l2);"></div>
-</div>
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">75</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 40px; background: var(--l2);"></div>
-</div>
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">75</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 40px; background: var(--l2);"></div>
-</div>
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">77,5</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 50px; background: var(--l2);"></div>
-</div>
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">77,5</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 50px; background: var(--l2);"></div>
-</div>
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">80</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 60px; background: var(--l2);"></div>
-</div>
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">80</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 60px; background: var(--l2);"></div>
-</div>
-
-<div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%">
-<span style="font-size: 11px; color: var(--mute); font-variant-numeric: tabular-nums">82,5</span>
-<div style="width: 100%; border-radius: 3px 3px 0 0; height: 70px; background: var(--ink);"></div>
-</div>
-
-</div>
-</div>
-
-<div>
-<h2 style="margin: 0 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Historial</h2>
-
-<div style="padding: 10px 0; border-bottom: 1px solid var(--line)">
-<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px"><span style="font-weight: 500">Push</span><span style="color: var(--mute); font-size: 12px">Lun 5 oct</span></div>
-<div style="font-size: 12px; color: var(--mute)">1h 12m · 6 ejercicios · 7.940 kg</div>
-</div>
-
-<div style="padding: 10px 0; border-bottom: 1px solid var(--line)">
-<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px"><span style="font-weight: 500">Torso</span><span style="color: var(--mute); font-size: 12px">Vie 2 oct</span></div>
-<div style="font-size: 12px; color: var(--mute)">1h 05m · 5 ejercicios · 8.310 kg</div>
-</div>
-
-<div style="padding: 10px 0; border-bottom: 1px solid var(--line)">
-<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px"><span style="font-weight: 500">Pierna</span><span style="color: var(--mute); font-size: 12px">Jue 1 oct</span></div>
-<div style="font-size: 12px; color: var(--mute)">1h 20m · 5 ejercicios · 11.200 kg</div>
-</div>
-
-</div>
-</aside>
-
-</div>
-</div>
-</div>
-</div><div class="gympage" data-page="Puntos" hidden>
-
-<div style="background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.5; ">
-<div style="padding:0">
-
-
-
-<header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px">
-<div>
-<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 84px; line-height: 0.9; font-variant-numeric: tabular-nums">1.424<span style="font-family: 'Instrument Sans', sans-serif; font-size: 18px; color: var(--mute); margin-left: 10px">pts esta semana</span></h1>
-<p style="margin: 12px 0 0; font-size: 15px; color: var(--mute)">Incluye 150 pts de bonus (sesión completada y récord) · Total acumulado: 18.940 pts</p>
-</div>
-<div style="display: flex; align-items: center; gap: 10px; border: 1px solid var(--ink); border-radius: 999px; padding: 8px 16px; font-size: 14px">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 22px; line-height: 1">×1,2</span>
-<span>Multiplicador por racha · 3 semanas cumpliendo tu plan</span>
-</div>
-</header>
-
-<nav aria-label="Gimnasio" style="display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 36px">
-<a href="#gimnasio" data-gym="Main" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Entreno</a>
-<a href="#gimnasio" data-gym="Puntos" aria-current="page" style="padding: 8px 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 14px; text-decoration: none">Puntos · 1.424</a>
-<a href="#gimnasio" data-gym="Grupo" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Grupo · 2.º de 6</a>
-</nav>
-
-<section aria-labelledby="src" style="margin-bottom: 44px">
-<h2 id="src" style="margin: 0 0 14px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">De dónde salen tus puntos</h2>
-<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden">
-
-<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
-<span style="font-size: 13px; color: var(--mute)">Kilos levantados</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">614</strong>
-<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 48%;"></div></div>
-<span style="font-size: 12px; color: var(--mute)">18.420 kg de volumen</span>
-</div>
-
-<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
-<span style="font-size: 13px; color: var(--mute)">Repeticiones</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">186</strong>
-<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 15%;"></div></div>
-<span style="font-size: 12px; color: var(--mute)">372 reps con peso corporal</span>
-</div>
-
-<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
-<span style="font-size: 13px; color: var(--mute)">Kilómetros</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">384</strong>
-<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 30%;"></div></div>
-<span style="font-size: 12px; color: var(--mute)">10,4 km corriendo y 7,2 km en bici</span>
-</div>
-
-<div style="background: var(--paper); padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
-<span style="font-size: 13px; color: var(--mute)">Pisos subidos</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums">90</strong>
-<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 7%;"></div></div>
-<span style="font-size: 12px; color: var(--mute)">45 pisos por escaleras</span>
-</div>
-
-</div>
-</section>
-
-<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
-
-<section aria-labelledby="rules" style="flex: 1 1 380px; min-width: 0">
-<h2 id="rules" style="margin: 0 0 4px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Cómo se puntúa</h2>
-<p style="margin: 0 0 14px; font-size: 13px; color: var(--mute)">Las mismas reglas para todos los miembros del grupo.</p>
-<div style="border-top: 1px solid var(--line)">
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
-<div><div style="font-size: 15px; font-weight: 500">Kilos levantados</div><div style="font-size: 12px; color: var(--mute)">kg × repeticiones de cada serie marcada como hecha</div></div>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">1 pt / 30 kg</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
-<div><div style="font-size: 15px; font-weight: 500">Repeticiones con peso corporal</div><div style="font-size: 12px; color: var(--mute)">Dominadas, flexiones, fondos… solo series completas</div></div>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">1 pt / 2 reps</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
-<div><div style="font-size: 15px; font-weight: 500">Correr o caminar</div><div style="font-size: 12px; color: var(--mute)">Distancia registrada en la sesión</div></div>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">30 pts / km</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
-<div><div style="font-size: 15px; font-weight: 500">Bicicleta</div><div style="font-size: 12px; color: var(--mute)">Exterior o estática</div></div>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">10 pts / km</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
-<div><div style="font-size: 15px; font-weight: 500">Pisos subidos</div><div style="font-size: 12px; color: var(--mute)">Escaleras, a pie</div></div>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">2 pts / piso</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
-<div><div style="font-size: 15px; font-weight: 500">Sesión completada</div><div style="font-size: 12px; color: var(--mute)">Todas las series del día marcadas</div></div>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">+50 pts</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline">
-<div><div style="font-size: 15px; font-weight: 500">Récord personal</div><div style="font-size: 12px; color: var(--mute)">Mejor marca en cualquier ejercicio</div></div>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px; white-space: nowrap">+100 pts</strong>
-</div>
-
-</div>
-<div style="margin-top: 18px; padding: 16px 18px; border: 1px dashed var(--l2); border-radius: 12px; font-size: 13px; color: var(--l3)">
-<strong style="color: var(--ink); font-weight: 500">Modo justo para competir:</strong> los kilos se ajustan a tu peso corporal, así que mover 100 kg pesando 60 kg vale más que pesando 90 kg.
-</div>
-</section>
-
-<section aria-labelledby="add" style="flex: 1 1 420px; min-width: 0">
-<h2 id="add" style="margin: 0 0 14px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Añadir actividad</h2>
-<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px">
-
-<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: inherit; font-size: 14px; min-height: 44px;">Correr</button>
-
-<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 14px; min-height: 44px;">Bicicleta</button>
-
-<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 14px; min-height: 44px;">Pisos</button>
-
-<button style="padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 14px; min-height: 44px;">Repeticiones</button>
-
-</div>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--mute)">Kilómetros<input value="5,2" style="border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: inherit; font-size: 16px; color: var(--ink); background: transparent"></label>
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--mute)">Minutos<input value="28" style="border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: inherit; font-size: 16px; color: var(--ink); background: transparent"></label>
-</div>
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap">
-<span style="font-size: 14px">Vas a sumar <strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 26px">+156 pts</strong></span>
-<button style="background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 12px 22px; font: inherit; font-size: 14px">Guardar actividad</button>
-</div>
-
-<h2 style="margin: 36px 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Últimos puntos</h2>
-<div style="border-top: 1px solid var(--line)">
-
-<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
-<span style="font-size: 12px; color: var(--mute)">Hoy</span>
-<span>Pull · 4 ejercicios · 6.120 kg</span>
-<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+254</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
-<span style="font-size: 12px; color: var(--mute)">Hoy</span>
-<span>Dominadas · 21 reps</span>
-<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+11</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
-<span style="font-size: 12px; color: var(--mute)">Lun</span>
-<span>Carrera · 5,2 km</span>
-<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+156</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
-<span style="font-size: 12px; color: var(--mute)">Lun</span>
-<span>Escaleras · 15 pisos</span>
-<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+30</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
-<span style="font-size: 12px; color: var(--mute)">Lun</span>
-<span>Récord · Press banca 82,5 kg × 5</span>
-<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+100</strong>
-</div>
-
-<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; font-size: 14px">
-<span style="font-size: 12px; color: var(--mute)">Lun</span>
-<span>Push completado · bonus</span>
-<strong style="font-weight: 500; font-variant-numeric: tabular-nums">+50</strong>
-</div>
-
-</div>
-</section>
-
-</div>
-</div>
-</div>
-</div><div class="gympage" data-page="Grupo" hidden>
-
-<div style="background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.5; ">
-<div style="padding:0">
-
-
-
-<header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px">
-<div>
-<h1 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 72px; line-height: 0.95">Erasmus Gym Club</h1>
-<p style="margin: 12px 0 0; font-size: 15px; color: var(--mute)">6 miembros · Liga semanal del 12 al 18 de octubre · cierra el domingo a las 23:59</p>
-</div>
-<div style="display: flex; gap: 8px; flex-wrap: wrap">
-<button style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 12px 18px; font: inherit; font-size: 14px; color: var(--ink)">Código: GYM-4K7Q</button>
-<button style="background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 12px 20px; font: inherit; font-size: 14px">Invitar amigos</button>
-</div>
-</header>
-
-<nav aria-label="Gimnasio" style="display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 36px">
-<a href="#gimnasio" data-gym="Main" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Entreno</a>
-<a href="#gimnasio" data-gym="Puntos" style="padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none">Puntos · 1.424</a>
-<a href="#gimnasio" data-gym="Grupo" aria-current="page" style="padding: 8px 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 14px; text-decoration: none">Grupo · 2.º de 6</a>
-</nav>
-
-<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
-
-<section aria-labelledby="league" style="flex: 999 1 540px; min-width: 0">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px">
-<h2 id="league" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Clasificación de la semana</h2>
-<div style="display: flex; gap: 6px">
-
-<button style="padding: 8px 14px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: inherit; font-size: 13px; min-height: 40px;">Puntos</button>
-
-<button style="padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 13px; min-height: 40px;">Kilos</button>
-
-<button style="padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 13px; min-height: 40px;">Km</button>
-
-</div>
-</div>
-<ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line)">
-
-<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">1</span>
-<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">LU</span>
-<div style="min-width: 0; flex: 1">
-<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
-<span style="font-size: 15px; font-weight: 500">Lukas</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">1522</strong>
-</div>
-<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 100%; background: var(--ink);"></div></div>
-<span style="font-size: 12px; color: var(--mute)">4 sesiones · racha ×1,3</span>
-</div>
-</li>
-
-<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line); background: var(--soft);">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">2</span>
-<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--ink); color: var(--paper);">TÚ</span>
-<div style="min-width: 0; flex: 1">
-<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
-<span style="font-size: 15px; font-weight: 500">Tú</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">1424</strong>
-</div>
-<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 94%; background: var(--l2);"></div></div>
-<span style="font-size: 12px; color: var(--mute)">3 sesiones · racha ×1,2</span>
-</div>
-</li>
-
-<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">3</span>
-<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">MA</span>
-<div style="min-width: 0; flex: 1">
-<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
-<span style="font-size: 15px; font-weight: 500">Marta</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">1190</strong>
-</div>
-<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 78%; background: var(--l2);"></div></div>
-<span style="font-size: 12px; color: var(--mute)">5 sesiones · racha ×1,1</span>
-</div>
-</li>
-
-<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">4</span>
-<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">PA</span>
-<div style="min-width: 0; flex: 1">
-<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
-<span style="font-size: 15px; font-weight: 500">Pablo</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">965</strong>
-</div>
-<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 63%; background: var(--l2);"></div></div>
-<span style="font-size: 12px; color: var(--mute)">2 sesiones</span>
-</div>
-</li>
-
-<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">5</span>
-<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">SO</span>
-<div style="min-width: 0; flex: 1">
-<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
-<span style="font-size: 15px; font-weight: 500">Sofía</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">810</strong>
-</div>
-<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 53%; background: var(--l2);"></div></div>
-<span style="font-size: 12px; color: var(--mute)">3 sesiones</span>
-</div>
-</li>
-
-<li style="display: flex; gap: 14px; align-items: center; padding: 14px 12px; border-bottom: 1px solid var(--line);">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1; width: 34px; text-align: center">6</span>
-<span style="width: 40px; height: 40px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; background: var(--soft); color: var(--ink); border: 1px solid var(--line);">JO</span>
-<div style="min-width: 0; flex: 1">
-<div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline">
-<span style="font-size: 15px; font-weight: 500">Jonas</span>
-<strong style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px; font-variant-numeric: tabular-nums">402</strong>
-</div>
-<div style="height: 5px; background: var(--soft); border-radius: 3px; overflow: hidden; margin: 6px 0 4px"><div style="height: 100%; width: 26%; background: var(--l2);"></div></div>
-<span style="font-size: 12px; color: var(--mute)">1 sesión</span>
-</div>
-</li>
-
-</ol>
-<p style="margin: 14px 0 0; font-size: 13px; color: var(--mute)">Te faltan 98 pts para pasar a Lukas. Un entreno completo de pierna suele dar unos 300.</p>
-
-<h2 style="margin: 44px 0 12px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Actividad del grupo</h2>
-<div style="border-top: 1px solid var(--line)">
-
-<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
-<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">MA</span>
-<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Marta</strong> corrió 10,4 km y sumó 312 pts<div style="font-size: 12px; color: var(--mute)">Hace 1 hora</div></div>
-<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 3</button>
-</div>
-
-<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
-<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">LU</span>
-<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Lukas</strong> batió su récord en sentadilla: 140 kg × 3<div style="font-size: 12px; color: var(--mute)">Hace 3 horas</div></div>
-<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 5</button>
-</div>
-
-<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
-<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">TÚ</span>
-<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Tú</strong> completaste Pull y sumaste 265 pts<div style="font-size: 12px; color: var(--mute)">Hoy, 10:47</div></div>
-<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 2</button>
-</div>
-
-<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
-<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">SO</span>
-<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Sofía</strong> subió 22 pisos y sumó 44 pts<div style="font-size: 12px; color: var(--mute)">Ayer</div></div>
-<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo · 1</button>
-</div>
-
-<div style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line)">
-<span style="width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex: none">PA</span>
-<div style="flex: 1; min-width: 0; font-size: 14px"><strong style="font-weight: 500">Pablo</strong> se unió al reto “Rey de las dominadas”<div style="font-size: 12px; color: var(--mute)">Ayer</div></div>
-<button aria-label="Dar ánimo" style="border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; color: var(--ink); min-height: 40px">Ánimo</button>
-</div>
-
-</div>
-</section>
-
-<aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
-<div>
-<h2 style="margin: 0 0 12px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 24px">Retos activos</h2>
-<div style="display: flex; flex-direction: column; gap: 12px">
-
-<article style="border: 1px solid var(--line); border-radius: 12px; padding: 16px">
-<div style="display: flex; justify-content: space-between; gap: 10px; align-items: baseline"><h3 style="margin: 0; font-size: 15px; font-weight: 500">100 km en octubre</h3><span style="font-size: 12px; color: var(--mute); white-space: nowrap">17 días</span></div>
-<p style="margin: 4px 0 10px; font-size: 12px; color: var(--mute)">Corriendo, andando o en bici. Reto de equipo.</p>
-<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 64%;"></div></div>
-<div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px"><span>Grupo: 64 de 100 km</span><span style="color: var(--mute)">Tú aportas 17,6 km</span></div>
-</article>
-
-<article style="border: 1px solid var(--line); border-radius: 12px; padding: 16px">
-<div style="display: flex; justify-content: space-between; gap: 10px; align-items: baseline"><h3 style="margin: 0; font-size: 15px; font-weight: 500">Rey de las dominadas</h3><span style="font-size: 12px; color: var(--mute); white-space: nowrap">4 días</span></div>
-<p style="margin: 4px 0 10px; font-size: 12px; color: var(--mute)">Más dominadas acumuladas esta semana.</p>
-<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 72%;"></div></div>
-<div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px"><span>Tú: 58 reps</span><span style="color: var(--mute)">Lidera Lukas con 81</span></div>
-</article>
-
-<article style="border: 1px solid var(--line); border-radius: 12px; padding: 16px">
-<div style="display: flex; justify-content: space-between; gap: 10px; align-items: baseline"><h3 style="margin: 0; font-size: 15px; font-weight: 500">500 pisos</h3><span style="font-size: 12px; color: var(--mute); white-space: nowrap">17 días</span></div>
-<p style="margin: 4px 0 10px; font-size: 12px; color: var(--mute)">Escaleras en lugar de ascensor durante el mes.</p>
-<div style="height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden"><div style="height: 100%; background: var(--ink); width: 31%;"></div></div>
-<div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px"><span>Grupo: 156 de 500</span><span style="color: var(--mute)">Lidera Sofía con 62</span></div>
-</article>
-
-</div>
-<button style="margin-top: 12px; width: 100%; border: 1.5px dashed var(--l2); border-radius: 10px; background: none; padding: 14px; font: inherit; font-size: 14px; color: var(--l3)">+ Crear reto</button>
-</div>
-
-<div style="border: 1px solid var(--ink); border-radius: 12px; padding: 18px">
-<h2 style="margin: 0 0 6px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px">Duelo 1 contra 1</h2>
-<p style="margin: 0 0 14px; font-size: 13px; color: var(--l3)">Reta a un amigo a quién suma más puntos en 7 días. El ganador se lleva +200 pts.</p>
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; text-align: center">
-<div><div style="font-size: 13px; color: var(--mute)">Tú</div><div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1">1.424</div></div>
-<span style="font-size: 13px; color: var(--mute)">vs</span>
-<div><div style="font-size: 13px; color: var(--mute)">Marta</div><div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; line-height: 1.1">1.190</div></div>
-</div>
-<p style="margin: 10px 0 0; font-size: 12px; color: var(--mute); text-align: center">Quedan 4 días</p>
-</div>
-
-<div>
-<h2 style="margin: 0 0 10px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 22px">Reglas del grupo</h2>
-<ul style="margin: 0; padding-left: 18px; font-size: 13px; color: var(--l3); display: flex; flex-direction: column; gap: 6px">
-<li>Modo justo activado: kilos ajustados al peso corporal.</li>
-<li>Máximo 1.000 pts por sesión para evitar errores al anotar.</li>
-<li>Un récord nuevo necesita el visto bueno de otro miembro.</li>
-<li>Solo se comparten puntos y sesiones, nunca tu peso ni tus notas.</li>
-</ul>
-</div>
-</aside>
-
-</div>
-</div>
-</div>
-</div></div>
+<div id="vGym" hidden></div>
   <div class="foot">
     <span id="saveState">Cargando…</span>
     <span style="display:flex;gap:16px;flex-wrap:wrap"><button class="lnk" id="bkBtn">Copia de seguridad</button><button class="lnk" id="editBtn">Editar objetivos</button></span>
@@ -1672,6 +969,8 @@ setInterval(()=&gt;{now=new Date();if(view===&quot;today&quot;)renderNowCards();
   <p class="sub" id="kMsg" style="margin:8px 0 0"></p>
   <div class="row"><button class="btn" id="kClose">Cerrar</button><button class="btn" id="kCopy">Copiar</button><button class="btn fill" id="kRestore">Restaurar</button></div>
 </dialog>
+
+<dialog id="gDlg" aria-label="Editar rutina"></dialog>
 
 <dialog id="bdlg">
   <h2 id="bdlgT">Nuevo libro</h2>
@@ -2042,7 +1341,7 @@ function renderAll(){
     if(nuevas.length){const m=nuevas[nuevas.length-1];toast("Medalla desbloqueada: "+m.name+" · +"+m.bonus+" pts")}
   }
   renderAll.ready=true;
-  renderMonth();renderDay();renderStats();renderYear();renderGame();renderBooks();
+  renderMonth();renderDay();renderStats();renderYear();renderGame();renderBooks();if(typeof renderGym==="function")renderGym();
 }
 
 document.getElementById("prev").onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderAll()};
@@ -2209,17 +1508,18 @@ function showView(v){
   document.querySelectorAll(".tabs button").forEach(b=>{b.classList.toggle("on",b.dataset.view===v);b.setAttribute("aria-current",b.dataset.view===v?"page":"false")});
   try{history.replaceState(null,"",VIEWS[v][1]?"#"+VIEWS[v][1]:location.pathname+location.search)}catch(e){}
   if(v==="books")renderBooks();
+  if(v==="gym")renderGym();
   try{window.scrollTo(0,0)}catch(e){}
 }
 document.getElementById("sPrev").onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderAll()};
 document.getElementById("sNext").onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderAll()};
 document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>showView(b.dataset.view));
-document.querySelectorAll("[data-gym]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.querySelectorAll(".gympage").forEach(p=>p.hidden=p.dataset.page!==a.dataset.gym);try{window.scrollTo(0,0)}catch(_){}}));
 
 /* ---------- Copia de seguridad ---------- */
 const kdlg=document.getElementById("kdlg"),kTxt=document.getElementById("kTxt"),kMsg=document.getElementById("kMsg");
 document.getElementById("bkBtn").onclick=()=>{
-  kTxt.value=JSON.stringify(state);kMsg.textContent="";
+  let ms=null;try{ms=localStorage.getItem("mi-semana-v1")}catch(e){}
+  kTxt.value=JSON.stringify(Object.assign({},state,ms?{miSemana:ms}:{}));kMsg.textContent="";
   if(kdlg.showModal)kdlg.showModal();else kdlg.setAttribute("open","");
 };
 document.getElementById("kClose").onclick=()=>kdlg.close();
@@ -2232,9 +1532,278 @@ document.getElementById("kRestore").onclick=()=>{
   let d;try{d=JSON.parse(kTxt.value)}catch(e){kMsg.textContent="El texto no es una copia válida.";return}
   if(!d||typeof d!=="object"||!d.days||!Array.isArray(d.objectives)){kMsg.textContent="El texto no es una copia válida.";return}
   if(!confirm("Esto sustituirá los datos actuales por los de la copia. ¿Continuar?"))return;
-  state=Object.assign({objectives:[],days:{},start:TK,books:[],pins:[]},d);
+  if(typeof d.miSemana==="string"){try{localStorage.setItem("mi-semana-v1",d.miSemana)}catch(e){}const fr=document.getElementById("weekFrame");if(fr)fr.srcdoc=fr.srcdoc}
+  delete d.miSemana;
+  state=Object.assign({objectives:[],days:{},start:TK,books:[],pins:[],gym:gDefault()},d);
   persist();renderAll.ready=false;renderAll();kdlg.close();toast("Datos restaurados");
 };
+
+/* ---------- Gimnasio ---------- */
+const gE=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const GDN=["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
+const GDL=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+const gid=()=>"g"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const gNum=v=>{const n=parseFloat(String(v==null?"":v).replace(",","."));return isFinite(n)?n:0};
+const gN1=v=>(Math.round(v*10)/10).toLocaleString("es-ES");
+const gInt=v=>Math.round(v).toLocaleString("es-ES");
+function gTpl(name,sub,list){return{name,sub,ex:list.map(([n,s,r,t])=>({id:gid(),name:n,sets:s,reps:r,type:t||"w"}))}}
+function gDefault(){
+  const push=()=>gTpl("Push","Pecho · hombro · tríceps",[["Press banca",4,"6–8"],["Press militar",3,"8–10"],["Press inclinado con mancuernas",3,"10–12"],["Fondos",3,"8–12","bw"],["Elevaciones laterales",3,"12–15"]]);
+  const pull=()=>gTpl("Pull","Espalda · bíceps",[["Dominadas",4,"6–8","bw"],["Remo con barra",4,"8–10"],["Jalón al pecho",3,"10–12"],["Curl con barra Z",3,"10–12"],["Face pull",3,"15"]]);
+  const leg=()=>gTpl("Pierna","Cuádriceps · glúteo · femoral",[["Sentadilla",4,"5–6"],["Peso muerto rumano",3,"8"],["Prensa",3,"10–12"],["Zancadas",3,"10"],["Gemelos",4,"12–15"]]);
+  return{routine:[push(),pull(),leg(),push(),pull(),null,leg()],sessions:[],active:null,cardio:[],bw:75,prs:{},just:false,group:null};
+}
+const gym=()=>{if(!state.gym)state.gym=gDefault();return state.gym};
+let gPage="train",gSel=null,gChartEx=null,gMetric="pts",gKind="run",gDlgDay=0,gDlgDraft=null;
+const gWeek=k=>{const d=parse(k);d.setDate(d.getDate()-((d.getDay()+6)%7));return key(d)};
+const gWD=k=>(parse(k).getDay()+6)%7;
+const gPlanned=()=>gym().routine.filter(Boolean).length;
+const gFactor=()=>gym().just?75/Math.max(35,gNum(gym().bw)||75):1;
+function gSessPts(s){const kg=Math.floor(s.vol*gFactor()/30),reps=Math.floor(s.reps/2),bonus=(s.complete?50:0)+100*(s.prs||[]).length;return{kg,reps,bonus,total:kg+reps+bonus}}
+function gCardioPts(c){const v=gNum(c.value);return c.kind==="run"?Math.round(v*30):c.kind==="bike"?Math.round(v*10):c.kind==="floors"?Math.round(v*2):Math.floor(v/2)}
+function gAgg(wk){
+  const g=gym(),a={kg:0,reps:0,km:0,floors:0,kmPts:0,floorPts:0,repPts:0,kgPts:0,bonus:0,sessions:0,min:0,vol:0,days:new Set()};
+  g.sessions.filter(s=>gWeek(s.date)===wk).forEach(s=>{const p=gSessPts(s);a.kgPts+=p.kg;a.repPts+=p.reps;a.bonus+=p.bonus;a.sessions++;a.min+=s.min;a.vol+=s.vol;a.reps+=s.reps;a.days.add(gWD(s.date))});
+  g.cardio.filter(c=>gWeek(c.date)===wk).forEach(c=>{const p=gCardioPts(c);if(c.kind==="run"||c.kind==="bike"){a.km+=gNum(c.value);a.kmPts+=p}else if(c.kind==="floors"){a.floors+=gNum(c.value);a.floorPts+=p}else{a.reps+=gNum(c.value);a.repPts+=p}if(c.min)a.min+=gNum(c.min)});
+  a.base=a.kgPts+a.repPts+a.kmPts+a.floorPts+a.bonus;return a;
+}
+function gTotals(){
+  const g=gym(),cur=gWeek(TK),keys=new Set([cur]);g.sessions.forEach(s=>keys.add(gWeek(s.date)));g.cardio.forEach(c=>keys.add(gWeek(c.date)));
+  const first=[...keys].sort()[0];let wk=first,streak=0,total=0,res={};
+  for(let guard=0;guard<600&&wk<=cur;guard++){const a=gAgg(wk),mult=1+0.1*Math.min(streak,5),pts=Math.round(a.base*mult);total+=pts;res[wk]={a,mult,pts};
+    if(wk!==cur)streak=a.sessions>=gPlanned()&&gPlanned()>0?streak+1:0;
+    const d=parse(wk);d.setDate(d.getDate()+7);wk=key(d)}
+  return{cur:res[cur],total};
+}
+function gLast(name,skipId){return gym().sessions.find(s=>s.id!==skipId&&s.ex.some(e=>e.name.toLowerCase()===name.toLowerCase()))}
+function gPrevSets(name){const s=gLast(name);if(!s)return[];const e=s.ex.find(e=>e.name.toLowerCase()===name.toLowerCase());return e?e.sets:[]}
+const gClock=ms=>{const t=Math.max(0,Math.floor(ms/1000));return String(Math.floor(t/3600)).padStart(2,"0")+":"+String(Math.floor(t%3600/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")};
+const gDur=m=>m>=60?Math.floor(m/60)+"h "+String(Math.round(m%60)).padStart(2,"0")+"m":Math.round(m)+" min";
+const gShort=k=>{const d=parse(k);return GDN[(d.getDay()+6)%7]+" "+d.getDate()+" "+MSHORT[d.getMonth()]};
+
+function gStart(day,free){
+  const g=gym(),r=free?null:g.routine[day];
+  g.active={id:gid(),date:TK,day,name:r?r.name:"Entreno libre",startedAt:Date.now(),notes:"",
+    ex:(r?r.ex:[]).map(e=>{const prev=gPrevSets(e.name);return{name:e.name,type:e.type,target:e.sets+" × "+e.reps,sets:Array.from({length:Math.max(1,e.sets)},(_,i)=>({kg:prev[i]?prev[i].kg:(prev.length?prev[prev.length-1].kg:""),reps:"",done:false}))}})};
+  persist();renderGym();toast("Sesión empezada · ¡a por ello!");
+}
+function gFinish(){
+  const g=gym(),a=g.active;if(!a)return;
+  const doneSets=a.ex.reduce((n,e)=>n+e.sets.filter(s=>s.done).length,0);
+  if(!doneSets&&!confirm("No has marcado ninguna serie. ¿Terminar igualmente?"))return;
+  let vol=0,reps=0;const prs=[];let all=0,dn=0;
+  a.ex.forEach(e=>{let best=null;e.sets.forEach(s=>{all++;if(!s.done)return;dn++;const kg=gNum(s.kg),r=Math.round(gNum(s.reps));if(r<=0)return;
+      if(e.type==="bw"){reps+=r;vol+=kg*r}else vol+=kg*r;
+      const score=e.type==="bw"?r+kg/2.5:kg*(1+r/30);if(!best||score>best.score)best={score,kg,reps:r}});
+    if(best){const k=e.name.toLowerCase(),old=g.prs[k];if(!old||best.score>old.score+1e-9){if(old)prs.push(e.name);g.prs[k]={name:e.name,type:e.type,kg:best.kg,reps:best.reps,score:best.score,date:TK}}}});
+  const s={id:a.id,date:a.date,day:a.day,name:a.name,min:Math.max(1,Math.round((Date.now()-a.startedAt)/60000)),ex:a.ex,notes:a.notes,vol:Math.round(vol),reps,prs,complete:all>0&&dn===all};
+  g.sessions.unshift(s);g.active=null;
+  const o=state.objectives.find(o=>/entren/i.test(o.name));
+  if(o){const d=ensureDay(TK);if(!d.done.includes(o.id)&&(d.ids||activeIds()).includes(o.id))d.done.push(o.id)}
+  persist();renderAll();
+  const p=gSessPts(s);toast("Sesión guardada · "+gDur(s.min)+" · +"+gInt(p.total)+" pts"+(prs.length?" · "+prs.length+" récord"+(prs.length>1?"s":""):"")+(o?" · «"+o.name+"» marcado":""));
+}
+
+function gTabsHtml(){
+  const t=gTotals(),cur=t.cur;let pos="";
+  if(gym().group){const lb=gBoard("pts");const i=lb.findIndex(m=>m.me);pos=" · "+(i+1)+".º de "+lb.length}
+  return `<nav class="gsub" aria-label="Gimnasio">${[["train","Entreno"],["points","Puntos · "+gInt(cur.pts)],["group","Grupo"+pos]].map(([id,l])=>`<button class="pill${gPage===id?" on":""}" data-g="page" data-v="${id}" aria-current="${gPage===id?"page":"false"}">${gE(l)}</button>`).join("")}</nav>`;
+}
+function gHeader(title,sub,right){return `<header style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px"><h1 class="month">${gE(title)}<small>${gE(sub)}</small></h1>${right||""}</header>`}
+
+function renderGym(){
+  const el=document.getElementById("vGym");if(!el||el.hidden)return;
+  const ae=document.activeElement;const keepId=ae&&ae.id&&el.contains(ae)?ae.id:null;
+  el.innerHTML=gPage==="points"?gPointsHtml():gPage==="group"?gGroupHtml():gTrainHtml();
+  if(keepId){const n=document.getElementById(keepId);if(n){n.focus();try{const l=n.value.length;n.setSelectionRange(l,l)}catch(e){}}}
+}
+
+function gTrainHtml(){
+  const g=gym(),cur=gWeek(TK),agg=gAgg(cur),wd=gWD(TK),sel=gSel==null?wd:gSel;
+  const mon=parse(cur),sun=new Date(mon);sun.setDate(mon.getDate()+6);
+  let h=gHeader("Gimnasio","Semana del "+mon.getDate()+" "+MSHORT[mon.getMonth()]+" al "+sun.getDate()+" "+MSHORT[sun.getMonth()]+" · "+agg.sessions+" de "+gPlanned()+" sesiones hechas")+gTabsHtml();
+  h+=`<section aria-labelledby="gsplit"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px"><h2 id="gsplit" class="gh2">División semanal</h2><button class="glink" data-g="editRoutine">Editar rutina</button></div><div class="gweek">`;
+  for(let d=0;d<7;d++){const r=g.routine[d],done=agg.days.has(d);
+    h+=`<button class="gday${r?"":" rest"}${done?" done":""}${d===wd?" today":""}${d===sel&&gSel!=null?" sel":""}" data-g="selDay" data-v="${d}" aria-label="${GDL[d]}: ${r?gE(r.name):"descanso"}${done?", hecho":""}"><span class="dw">${GDN[d]}${d===wd?" · hoy":""}${done?" ✓":""}</span><span class="dn">${r?gE(r.name):"Descanso"}</span><span class="ds">${r?gE(r.sub||""):""}</span></button>`}
+  h+=`</div></section><div class="gcols"><section class="gmain">`+(g.active?gActiveHtml():gDayHtml(sel))+`</section><aside class="gside">`+gSideHtml(agg)+`</aside></div>`;
+  return h;
+}
+function gDayHtml(d){
+  const g=gym(),r=g.routine[d],wd=gWD(TK),todaySess=g.sessions.filter(s=>s.date===TK);
+  let h=`<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px"><div><h2 class="gh2">${d===wd?"Hoy":GDL[d]} · ${r?gE(r.name):"Descanso"}</h2><p class="gmute" style="margin:2px 0 0">${r?gE(r.sub||"")+" · "+r.ex.length+" ejercicios":"No hay entreno planificado"}</p></div>`;
+  h+=r?`<button class="gbtn fill" data-g="start" data-v="${d}">Empezar sesión</button>`:`<button class="gbtn" data-g="startFree">Entrenar igualmente</button>`;
+  h+=`</div>`;
+  if(d===wd&&todaySess.length)h+=`<div class="gcard" style="margin-bottom:16px">Hoy ya has completado <strong>${gE(todaySess[0].name)}</strong> · ${gDur(todaySess[0].min)} · +${gInt(gSessPts(todaySess[0]).total)} pts</div>`;
+  if(r&&r.ex.length){h+=`<div style="border-top:1px solid var(--line)">`+r.ex.map(e=>{const p=gPrevSets(e.name).filter(s=>s.done);const last=p.length?p.map(s=>(e.type==="bw"?(gNum(s.kg)?"+"+s.kg:"PC"):s.kg)+"×"+s.reps).join(" · "):"Sin registros";
+    return `<div class="grow"><span><span style="font-weight:500">${gE(e.name)}</span><br><span class="gmute">Última vez: ${gE(last)}</span></span><span class="gmute" style="white-space:nowrap">${e.sets} × ${gE(e.reps)}${e.type==="bw"?" · PC":""}</span></div>`}).join("")+`</div>`}
+  else if(r)h+=`<div class="gempty">Este día no tiene ejercicios. Añádelos en «Editar rutina» o registra cardio en Puntos.</div>`;
+  return h;
+}
+function gActiveHtml(){
+  const a=gym().active;
+  let h=`<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px"><div><h2 class="gh2">${a.date===TK?"Hoy":gShort(a.date)} · ${gE(a.name)}</h2><p class="gmute" style="margin:2px 0 0">Sesión en curso · marca cada serie al terminarla</p></div><div class="gtimer"><span id="gTimer">${gClock(Date.now()-a.startedAt)}</span><button class="gbtn fill sm" data-g="finish">Terminar sesión</button></div></div><div style="border-top:1px solid var(--line)">`;
+  a.ex.forEach((e,ei)=>{const prev=gPrevSets(e.name);
+    h+=`<article class="gex"><div class="gexh"><h3>${gE(e.name)}</h3><span style="display:flex;align-items:center;gap:6px"><span class="gmute">${gE(e.target||"")}${e.type==="bw"?" · peso corporal":""}</span><button class="gx" data-g="delEx" data-v="${ei}" aria-label="Quitar ${gE(e.name)}">×</button></span></div>`;
+    h+=`<div class="gset hd"><span>Serie</span><span>${e.type==="bw"?"Lastre kg":"Kg"}</span><span>Reps</span><span>Anterior</span><span></span></div>`;
+    e.sets.forEach((s,si)=>{const p=prev[si];
+      h+=`<div class="gset"><span class="gmute">${si+1}</span><input id="gk${ei}_${si}" inputmode="decimal" aria-label="Kilos serie ${si+1}" data-g="kg" data-e="${ei}" data-s="${si}" value="${gE(s.kg)}" placeholder="${e.type==="bw"?"0":"kg"}"><input id="gr${ei}_${si}" inputmode="numeric" aria-label="Repeticiones serie ${si+1}" data-g="reps" data-e="${ei}" data-s="${si}" value="${gE(s.reps)}" placeholder="${p?gE(p.reps):"reps"}"><span class="gmute">${p?gE((e.type==="bw"&&!gNum(p.kg)?"PC":p.kg)+" × "+p.reps):"—"}</span><button class="gchk${s.done?" on":""}" data-g="tog" data-e="${ei}" data-s="${si}" aria-pressed="${s.done}" aria-label="Serie ${si+1} hecha">✓</button></div>`});
+    h+=`<button class="glink" style="margin-top:8px" data-g="addSet" data-v="${ei}">+ Añadir serie</button></article>`});
+  h+=`</div><div style="display:flex;gap:8px;margin-top:16px"><input class="gsel" id="gNewEx" placeholder="Añadir ejercicio (ej. Hip thrust)" style="flex:1"><button class="gbtn" data-g="addEx">Añadir</button></div>`;
+  h+=`<label class="gmute" for="gNotes" style="display:block;margin:22px 0 6px">Notas de la sesión</label><textarea class="gta" id="gNotes" data-g="notes" placeholder="Cómo te has sentido, molestias, sensaciones…">${gE(a.notes)}</textarea>`;
+  h+=`<div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="glink" style="color:var(--fail)" data-g="cancel">Descartar sesión</button></div>`;
+  return h;
+}
+function gSideHtml(agg){
+  const g=gym();
+  let h=`<div class="gkpi"><div><strong>${agg.sessions}/${gPlanned()}</strong><span>Sesiones esta semana</span></div><div><strong>${agg.min?gDur(agg.min):"0 min"}</strong><span>Tiempo entrenado</span></div><div><strong>${gInt(agg.vol)}</strong><span>Kg movidos (volumen)</span></div><button data-g="bw" aria-label="Cambiar peso corporal"><strong>${gN1(gNum(g.bw))}</strong><span>Peso corporal (kg) · editar</span></button></div>`;
+  const prs=Object.values(g.prs).sort((a,b)=>a.date<b.date?1:-1).slice(0,6);
+  h+=`<div><h2 class="gh2" style="font-size:24px;margin-bottom:8px">Récords personales</h2>`+(prs.length?prs.map(p=>`<div class="grow"><span>${gE(p.name)}</span><span style="white-space:nowrap"><strong style="font-weight:500">${p.type==="bw"?(gNum(p.kg)?"+"+gN1(p.kg)+" kg × ":"")+p.reps+" reps":gN1(p.kg)+" kg × "+p.reps}</strong> <span class="gmute">${gShort(p.date)}</span></span></div>`).join(""):`<p class="gmute">Aparecerán al terminar tu primera sesión.</p>`)+`</div>`;
+  const names=[...new Set(g.sessions.flatMap(s=>s.ex.filter(e=>e.sets.some(x=>x.done)).map(e=>e.name)))];
+  if(names.length){if(!gChartEx||!names.includes(gChartEx))gChartEx=names[0];h+=`<div><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px"><h2 class="gh2" style="font-size:24px">Evolución</h2><select class="gsel" style="width:auto;max-width:60%;padding:6px 8px;font-size:13px" data-g="chartEx" aria-label="Ejercicio">${names.map(n=>`<option${n===gChartEx?" selected":""}>${gE(n)}</option>`).join("")}</select></div>${gChart(gChartEx)}</div>`}
+  h+=`<div><h2 class="gh2" style="font-size:24px;margin-bottom:8px">Historial</h2>`+(g.sessions.length?g.sessions.slice(0,8).map(s=>`<div class="grow"><span><span style="font-weight:500">${gE(s.name)}</span><br><span class="gmute">${gDur(s.min)} · ${s.ex.length} ejercicios · ${gInt(s.vol)} kg · +${gInt(gSessPts(s).total)} pts</span></span><span style="display:flex;align-items:center;gap:4px"><span class="gmute" style="white-space:nowrap">${gShort(s.date)}</span><button class="gx" data-g="delSess" data-v="${s.id}" aria-label="Borrar sesión">×</button></span></div>`).join(""):`<p class="gmute">Todavía no hay sesiones guardadas.</p>`)+`</div>`;
+  return h;
+}
+function gChart(name){
+  const g=gym(),cur=parse(gWeek(TK)),weeks=[];
+  for(let i=7;i>=0;i--){const d=new Date(cur);d.setDate(cur.getDate()-7*i);weeks.push(key(d))}
+  let isBw=false;
+  const vals=weeks.map(w=>{let best=0;g.sessions.filter(s=>gWeek(s.date)===w).forEach(s=>s.ex.filter(e=>e.name.toLowerCase()===name.toLowerCase()).forEach(e=>{if(e.type==="bw")isBw=true;e.sets.filter(x=>x.done).forEach(x=>{const v=e.type==="bw"?gNum(x.reps):gNum(x.kg);if(v>best)best=v})}));return best});
+  const max=Math.max(...vals,1),W=300,H=120;
+  let s=`<svg viewBox="0 0 ${W} ${H+28}" width="100%" role="img" aria-label="Mejor serie por semana de ${gE(name)}">`;
+  vals.forEach((v,i)=>{const bw=W/8,x=i*bw+4,w=bw-8,h=v?Math.max(4,v/max*(H-16)):0,y=H-h;
+    s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" style="fill:${i===7?"var(--ink)":"var(--l2)"}"/>`;
+    if(v)s+=`<text x="${x+w/2}" y="${y-4}" text-anchor="middle" font-size="10" style="fill:var(--mute)">${gN1(v)}</text>`;
+    const d=parse(weeks[i]);s+=`<text x="${x+w/2}" y="${H+16}" text-anchor="middle" font-size="10" style="fill:var(--mute)">${d.getDate()}/${d.getMonth()+1}</text>`});
+  return s+`<line x1="0" x2="${W}" y1="${H}" y2="${H}" style="stroke:var(--line)"/></svg><p class="gmute" style="margin:4px 0 0">${isBw?"Máximo de repeticiones":"Mejor peso (kg)"} por semana · últimas 8 semanas</p>`;
+}
+
+const GKINDS={run:{l:"Correr",f:"Kilómetros",u:"km",rate:"30 pts / km"},bike:{l:"Bicicleta",f:"Kilómetros",u:"km",rate:"10 pts / km"},floors:{l:"Pisos",f:"Pisos subidos",u:"pisos",rate:"2 pts / piso"},reps:{l:"Repeticiones",f:"Repeticiones",u:"reps",rate:"1 pt / 2 reps"}};
+function gPointsHtml(){
+  const g=gym(),t=gTotals(),c=t.cur,a=c.a,max=Math.max(a.kgPts,a.repPts,a.kmPts,a.floorPts,1);
+  let h=`<header style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:20px"><h1 class="month">${gInt(c.pts)}<small>pts esta semana · total acumulado ${gInt(t.total)} pts</small></h1><div class="gcard ink" style="border-radius:999px;padding:8px 16px;font-size:14px"><span style="font:400 22px 'Instrument Serif',Georgia,serif">×${gN1(c.mult)}</span> multiplicador por racha${c.mult>1?"":" · cumple tu plan semanal para subirlo"}</div></header>`+gTabsHtml();
+  h+=`<h2 class="gh2" style="margin-bottom:14px">De dónde salen tus puntos</h2><div class="gsrc">`+[["Kilos levantados",a.kgPts,gInt(a.vol)+" kg de volumen"],["Repeticiones",a.repPts,gInt(a.reps)+" reps con peso corporal"],["Kilómetros",a.kmPts,gN1(a.km)+" km corriendo o en bici"],["Pisos subidos",a.floorPts,gInt(a.floors)+" pisos"]].map(([l,p,d])=>`<div><span class="gmute">${l}</span><strong>${gInt(p)}</strong><div class="gbar"><i style="width:${Math.round(p/max*100)}%"></i></div><span class="gmute" style="font-size:12px">${d}</span></div>`).join("")+`</div><p class="gmute" style="margin:10px 0 40px">+${gInt(a.bonus)} pts de bonus por sesiones completas y récords${c.mult>1?" · puntos multiplicados por ×"+gN1(c.mult):""}.</p>`;
+  h+=`<div class="gcols" style="margin-top:0"><section style="flex:1 1 360px;min-width:0"><h2 class="gh2" style="margin-bottom:12px">Cómo se puntúa</h2>`+[["Kilos levantados","kg × reps de cada serie hecha","1 pt / 30 kg"],["Repeticiones con peso corporal","Dominadas, fondos, flexiones…","1 pt / 2 reps"],["Correr o caminar","Distancia registrada","30 pts / km"],["Bicicleta","Exterior o estática","10 pts / km"],["Pisos subidos","Escaleras, a pie","2 pts / piso"],["Sesión completada","Todas las series marcadas","+50 pts"],["Récord personal","Superar tu mejor marca","+100 pts"],["Racha semanal","Cada semana cumpliendo tu plan (máx. 5)","+10 %"]].map(([w,n,p])=>`<div class="grow"><span><span style="font-weight:500">${w}</span><br><span class="gmute">${n}</span></span><strong style="font:400 20px 'Instrument Serif',Georgia,serif;white-space:nowrap">${p}</strong></div>`).join("")+
+   `<label class="gcard" style="display:flex;gap:12px;align-items:flex-start;margin-top:16px;cursor:pointer"><input type="checkbox" data-g="just" ${g.just?"checked":""} style="width:18px;height:18px;margin-top:2px;accent-color:var(--ink)"><span><strong style="font-weight:500">Modo justo</strong><br><span class="gmute">Ajusta los kilos a tu peso corporal (${gN1(gNum(g.bw))} kg) para competir en igualdad.</span></span></label></section>`;
+  const k=GKINDS[gKind],log=[...g.sessions.map(s=>({date:s.date,t:s.date+"z",what:s.name+" · "+gInt(s.vol)+" kg · "+gDur(s.min),pts:gSessPts(s).total})),...g.cardio.map(c=>({date:c.date,t:c.date+(c.ts||""),id:c.id,what:GKINDS[c.kind].l+(c.kind==="reps"&&c.ex?" ("+c.ex+")":"")+" · "+gN1(gNum(c.value))+" "+GKINDS[c.kind].u,pts:gCardioPts(c)}))].sort((a,b)=>a.t<b.t?1:-1).slice(0,10);
+  h+=`<section style="flex:1 1 400px;min-width:0"><h2 class="gh2" style="margin-bottom:12px">Añadir actividad</h2><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">${Object.entries(GKINDS).map(([id,o])=>`<button class="pill${gKind===id?" on":""}" data-g="kind" data-v="${id}">${o.l}</button>`).join("")}</div>
+   <div class="gform"><label>${k.f}<input id="gVal" inputmode="decimal" data-g="prev" placeholder="${gKind==="floors"?"12":gKind==="reps"?"40":"5,2"}"></label><label>${gKind==="reps"?"Ejercicio":"Minutos (opcional)"}<input id="gAux" ${gKind==="reps"?'placeholder="Flexiones"':'inputmode="numeric" placeholder="30"'}></label><label>Fecha<input id="gDate" type="date" value="${TK}" max="${TK}"></label></div>
+   <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap"><span>Vas a sumar <strong id="gPrev" style="font:400 26px 'Instrument Serif',Georgia,serif">+0 pts</strong> <span class="gmute">(${k.rate})</span></span><button class="gbtn fill" data-g="addCardio">Guardar actividad</button></div>
+   <h2 class="gh2" style="font-size:24px;margin:34px 0 8px">Últimos puntos</h2>`+(log.length?log.map(l=>`<div class="grow"><span><span class="gmute" style="display:inline-block;min-width:74px">${gShort(l.date)}</span>${gE(l.what)}</span><span style="display:flex;align-items:center;gap:4px"><strong style="font-weight:500">+${gInt(l.pts)}</strong>${l.id?`<button class="gx" data-g="delCardio" data-v="${l.id}" aria-label="Borrar actividad">×</button>`:""}</span></div>`).join(""):`<p class="gmute">Cuando entrenes o registres actividad aparecerán aquí.</p>`)+`</section></div>`;
+  return h;
+}
+
+/* Grupo: tarjetas de puntos que se comparten por mensaje (sin servidor) */
+function gMyCard(){const g=gym(),a=gTotals().cur;return{v:1,g:g.group.name,n:g.group.me,w:gWeek(TK),p:a.pts,kg:Math.round(a.a.vol),km:Math.round(a.a.km*10)/10,s:a.a.sessions,t:Date.now()}}
+const gEnc=o=>"GYM1."+btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+function gDec(txt){try{const m=String(txt).trim().match(/GYM1\.([A-Za-z0-9+/=]+)/);if(!m)return null;const o=JSON.parse(decodeURIComponent(escape(atob(m[1]))));if(!o||o.v!==1||!o.n||!o.w)return null;return o}catch(e){return null}}
+function gBoard(metric){
+  const g=gym(),wk=gWeek(TK),me=gMyCard(),list=[{name:g.group.me,me:true,card:me}];
+  Object.values(g.group.friends||{}).forEach(c=>list.push({name:c.n,me:false,card:c,stale:c.w!==wk}));
+  const val=m=>m.stale?0:metric==="kg"?m.card.kg:metric==="km"?m.card.km:metric==="s"?m.card.s:m.card.p;
+  list.forEach(m=>m.val=val(m));return list.sort((a,b)=>b.val-a.val);
+}
+function gGroupHtml(){
+  const g=gym();
+  if(!g.group){return gHeader("Grupo","Compite con tus amigos por puntos, kilos o kilómetros")+gTabsHtml()+`<div class="gcols" style="margin-top:0">
+    <section class="gcard" style="flex:1 1 320px"><h2 class="gh2" style="margin-bottom:6px">Crear un grupo</h2><p class="gmute" style="margin:0 0 14px">Ponle nombre y comparte tu tarjeta con tus amigos.</p><div class="gform" style="grid-template-columns:1fr"><label>Nombre del grupo<input id="gGName" placeholder="Erasmus Gym Club" maxlength="40"></label><label>Tu nombre en el grupo<input id="gMe1" placeholder="Javier" maxlength="24"></label></div><button class="gbtn fill" style="margin-top:14px" data-g="createGroup">Crear grupo</button></section>
+    <section class="gcard" style="flex:1 1 320px"><h2 class="gh2" style="margin-bottom:6px">Unirme a un grupo</h2><p class="gmute" style="margin:0 0 14px">Pega la tarjeta que te ha enviado un amigo (empieza por GYM1.).</p><div class="gform" style="grid-template-columns:1fr"><label>Tarjeta de tu amigo<input id="gJoinCode" placeholder="GYM1.eyJ2Ijox…"></label><label>Tu nombre en el grupo<input id="gMe2" placeholder="Javier" maxlength="24"></label></div><button class="gbtn fill" style="margin-top:14px" data-g="joinGroup">Unirme</button></section></div>
+    <p class="gmute" style="margin-top:24px;max-width:640px">Cómo funciona: no hay servidor ni cuentas. Cada miembro envía su <strong style="font-weight:500">tarjeta de puntos</strong> (un texto corto) por WhatsApp o donde queráis, y los demás la pegan aquí para actualizar la clasificación. Solo se comparten puntos, kilos, kilómetros y número de sesiones de la semana.</p>`}
+  const board=gBoard(gMetric),max=Math.max(...board.map(m=>m.val),1),fmtV=v=>gMetric==="kg"?gInt(v)+" kg":gMetric==="km"?gN1(v)+" km":gMetric==="s"?v+" ses.":gInt(v);
+  const mon=parse(gWeek(TK)),sun=new Date(mon);sun.setDate(mon.getDate()+6);
+  const myPos=board.findIndex(m=>m.me);const ahead=myPos>0?board[myPos-1]:null;
+  let h=gHeader(g.group.name,board.length+(board.length===1?" miembro":" miembros")+" · Liga semanal del "+mon.getDate()+" "+MSHORT[mon.getMonth()]+" al "+sun.getDate()+" "+MSHORT[sun.getMonth()],`<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="gbtn fill" data-g="copyCard">Copiar mi tarjeta</button></div>`)+gTabsHtml();
+  h+=`<div class="gcols" style="margin-top:0"><section class="gmain"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px"><h2 class="gh2">Clasificación de la semana</h2><div style="display:flex;gap:6px;flex-wrap:wrap">${[["pts","Puntos"],["kg","Kilos"],["km","Km"],["s","Sesiones"]].map(([id,l])=>`<button class="pill${gMetric===id?" on":""}" data-g="metric" data-v="${id}">${l}</button>`).join("")}</div></div><ol class="glb">`;
+  board.forEach((m,i)=>{h+=`<li class="${m.me?"me":""}"><span class="gpos">${i+1}</span><span class="gav">${gE((m.name||"?").slice(0,2).toUpperCase())}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline"><span style="font-weight:500">${gE(m.name)}${m.me?" (tú)":""}</span><strong style="font:400 24px 'Instrument Serif',Georgia,serif">${fmtV(m.val)}</strong></div><div class="gbar" style="margin:6px 0 4px"><i style="width:${Math.round(m.val/max*100)}%;background:${i===0?"var(--ink)":"var(--l2)"}"></i></div><span class="gmute" style="font-size:12px">${m.me?"Actualizado ahora":m.stale?"Sin tarjeta de esta semana · última de "+gShort(m.card.w):"Tarjeta del "+new Date(m.card.t).toLocaleDateString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}${m.card.s!=null&&!m.stale?" · "+m.card.s+(m.card.s===1?" sesión":" sesiones"):""}</span></div>${m.me?"":`<button class="gx" data-g="delFriend" data-v="${gE(m.name)}" aria-label="Quitar a ${gE(m.name)}">×</button>`}</li>`});
+  h+=`</ol>`+(ahead?`<p class="gmute" style="margin-top:12px">Te faltan ${fmtV(ahead.val-board[myPos].val)} para pasar a ${gE(ahead.name)}.</p>`:board.length>1?`<p class="gmute" style="margin-top:12px">Vas primero esta semana.</p>`:"");
+  h+=`<div class="gcard" style="margin-top:28px"><h2 class="gh2" style="font-size:22px;margin-bottom:6px">Añadir o actualizar a un amigo</h2><p class="gmute" style="margin:0 0 10px">Pega aquí la tarjeta que te envíe. Si ya estaba en el grupo, se actualizan sus datos.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><input class="gsel" id="gPaste" placeholder="GYM1.…" style="flex:1;min-width:200px"><button class="gbtn fill" data-g="paste">Añadir tarjeta</button></div></div></section><aside class="gside">`;
+  const sum=m=>board.filter(x=>!x.stale).reduce((s,x)=>s+(m==="kg"?x.card.kg:m==="km"?x.card.km:m==="s"?x.card.s:x.card.p),0);
+  h+=`<div><h2 class="gh2" style="font-size:24px;margin-bottom:10px">Retos del grupo esta semana</h2>`+((g.group.challenges||[]).map(c=>{const v=sum(c.metric),pct=Math.min(100,Math.round(v/Math.max(1,c.target)*100));return `<article class="gcard" style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;gap:8px"><h3 style="margin:0;font-size:15px;font-weight:500">${gE(c.title)}</h3><button class="gx" data-g="delChal" data-v="${c.id}" aria-label="Borrar reto">×</button></div><div class="gbar" style="margin:10px 0 6px"><i style="width:${pct}%"></i></div><span class="gmute" style="font-size:12px">${pct>=100?"¡Conseguido! ":""}${fmtV2(v,c.metric)} de ${fmtV2(c.target,c.metric)} entre todos</span></article>`}).join("")||`<p class="gmute">Aún no hay retos.</p>`)+
+    `<div class="gcard"><div class="gform" style="grid-template-columns:1fr 1fr"><label style="grid-column:1/-1">Nuevo reto<input id="gChT" placeholder="100 km entre todos" maxlength="50"></label><label>Medida<select class="gsel" id="gChM"><option value="km">Kilómetros</option><option value="pts">Puntos</option><option value="kg">Kilos</option><option value="s">Sesiones</option></select></label><label>Objetivo<input id="gChV" inputmode="decimal" placeholder="100"></label></div><button class="gbtn" style="margin-top:12px" data-g="addChal">Crear reto</button></div></div>`;
+  const friends=board.filter(m=>!m.me);
+  if(friends.length){const dw=g.group.duel&&friends.find(f=>f.name===g.group.duel)?g.group.duel:friends[0].name,fr=friends.find(f=>f.name===dw),meP=board.find(m=>m.me).card.p,frP=fr.stale?0:fr.card.p;
+    h+=`<div class="gcard ink"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:12px"><h2 class="gh2" style="font-size:22px">Duelo 1 contra 1</h2><select class="gsel" style="width:auto;padding:6px 8px;font-size:13px" data-g="duel" aria-label="Rival">${friends.map(f=>`<option${f.name===dw?" selected":""}>${gE(f.name)}</option>`).join("")}</select></div><div style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;text-align:center"><div><div class="gmute">Tú</div><div style="font:400 32px 'Instrument Serif',Georgia,serif">${gInt(meP)}</div></div><span class="gmute">vs</span><div><div class="gmute">${gE(fr.name)}</div><div style="font:400 32px 'Instrument Serif',Georgia,serif">${gInt(frP)}</div></div></div><p class="gmute" style="text-align:center;margin:10px 0 0">${meP===frP?"Empate por ahora":meP>frP?"Vas ganando por "+gInt(meP-frP)+" pts":"Te faltan "+gInt(frP-meP)+" pts"}</p></div>`}
+  h+=`<div><h2 class="gh2" style="font-size:22px;margin-bottom:8px">Tu tarjeta de esta semana</h2><p class="gmute" style="margin:0 0 8px">Envíala a tu grupo cada vez que entrenes para que vean tus puntos.</p><div class="gcode" id="gMyCode">${gE(gEnc(gMyCard()))}</div><button class="glink" style="margin-top:14px;color:var(--fail)" data-g="leave">Salir del grupo</button></div></aside></div>`;
+  return h;
+}
+function fmtV2(v,m){return m==="kg"?gInt(v)+" kg":m==="km"?gN1(v)+" km":m==="s"?gInt(v)+" sesiones":gInt(v)+" pts"}
+async function gCopy(t){let ok=false;try{await navigator.clipboard.writeText(t);ok=true}catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{ok=document.execCommand("copy")}catch(e2){}ta.remove()}return ok}
+
+/* Editor de rutina */
+const gDlg=document.getElementById("gDlg");
+function gOpenRoutine(){gDlgDraft=JSON.parse(JSON.stringify(gym().routine));gDlgDay=gSel==null?gWD(TK):gSel;gDrawRoutine();if(gDlg.showModal)gDlg.showModal();else gDlg.setAttribute("open","")}
+function gDrawRoutine(){
+  const r=gDlgDraft[gDlgDay];
+  let h=`<h2>Editar rutina</h2><div class="gdays">${GDN.map((d,i)=>`<button type="button" class="${i===gDlgDay?"on":""}" data-r="day" data-v="${i}">${d}${gDlgDraft[i]?"":" · desc."}</button>`).join("")}</div>`;
+  if(!r){h+=`<p class="sub">El ${GDL[gDlgDay].toLowerCase()} es día de descanso.</p><button type="button" class="btn" data-r="mkday">Convertir en día de entreno</button>`}
+  else{h+=`<label for="gRN">Nombre del día</label><input id="gRN" data-r="name" value="${gE(r.name)}" maxlength="30"><label for="gRS">Descripción</label><input id="gRS" data-r="sub" value="${gE(r.sub||"")}" maxlength="50">
+    <div class="gr hd" style="margin-top:14px"><span>Ejercicio</span><span>Series</span><span>Reps</span><span class="gty">Tipo</span><span></span></div>`+
+    r.ex.map((e,i)=>`<div class="gr"><input aria-label="Ejercicio" data-r="ex" data-i="${i}" data-f="name" value="${gE(e.name)}"><input aria-label="Series" inputmode="numeric" data-r="ex" data-i="${i}" data-f="sets" value="${e.sets}"><input aria-label="Repeticiones" data-r="ex" data-i="${i}" data-f="reps" value="${gE(e.reps)}"><select class="gty" aria-label="Tipo" data-r="ex" data-i="${i}" data-f="type"><option value="w"${e.type==="w"?" selected":""}>Con peso</option><option value="bw"${e.type==="bw"?" selected":""}>Peso corporal</option></select><button type="button" class="tdel" data-r="del" data-i="${i}" aria-label="Quitar ejercicio">×</button></div>`).join("")+
+    `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn" data-r="add">+ Ejercicio</button><button type="button" class="btn" data-r="rest" style="border-color:var(--line)">Hacer día de descanso</button></div>`}
+  h+=`<div class="row"><button type="button" class="btn" data-r="cancel">Cancelar</button><button type="button" class="btn fill" data-r="save">Guardar rutina</button></div>`;
+  gDlg.innerHTML=h;
+}
+gDlg.addEventListener("input",e=>{const t=e.target,r=gDlgDraft[gDlgDay];if(!r)return;
+  if(t.dataset.r==="name")r.name=t.value;else if(t.dataset.r==="sub")r.sub=t.value;
+  else if(t.dataset.r==="ex"){const ex=r.ex[+t.dataset.i];if(t.dataset.f==="sets")ex.sets=Math.max(1,Math.min(10,Math.round(gNum(t.value))||1));else ex[t.dataset.f]=t.value}});
+gDlg.addEventListener("change",e=>{const t=e.target;if(t.dataset.r==="ex"&&t.dataset.f==="type")gDlgDraft[gDlgDay].ex[+t.dataset.i].type=t.value});
+gDlg.addEventListener("click",e=>{const b=e.target.closest("[data-r]");if(!b||b.tagName==="INPUT"||b.tagName==="SELECT")return;const a=b.dataset.r,r=gDlgDraft[gDlgDay];
+  if(a==="day"){gDlgDay=+b.dataset.v;gDrawRoutine()}
+  else if(a==="mkday"){gDlgDraft[gDlgDay]={name:"Entreno",sub:"",ex:[{id:gid(),name:"",sets:3,reps:"10",type:"w"}]};gDrawRoutine()}
+  else if(a==="rest"){gDlgDraft[gDlgDay]=null;gDrawRoutine()}
+  else if(a==="add"){r.ex.push({id:gid(),name:"",sets:3,reps:"10",type:"w"});gDrawRoutine();const ins=gDlg.querySelectorAll('[data-f="name"]');if(ins.length)ins[ins.length-1].focus()}
+  else if(a==="del"){r.ex.splice(+b.dataset.i,1);gDrawRoutine()}
+  else if(a==="cancel")gDlg.close();
+  else if(a==="save"){gDlgDraft.forEach(d=>{if(d){d.name=d.name.trim()||"Entreno";d.ex=d.ex.filter(x=>x.name.trim()).map(x=>({...x,name:x.name.trim()}))}});gym().routine=gDlgDraft;persist();gDlg.close();renderGym();toast("Rutina guardada")}
+});
+
+/* Eventos de la sección */
+const vGymEl=document.getElementById("vGym");
+vGymEl.addEventListener("click",async e=>{
+  const b=e.target.closest("[data-g]");if(!b||b.tagName==="INPUT"&&b.type!=="checkbox"||b.tagName==="TEXTAREA"||b.tagName==="SELECT")return;
+  const g=gym(),a=b.dataset.g,v=b.dataset.v;
+  if(a==="page"){gPage=v;renderGym();try{window.scrollTo(0,0)}catch(_){}}
+  else if(a==="selDay"){if(g.active){toast("Termina o descarta la sesión en curso primero");return}gSel=+v===gWD(TK)&&gSel==null?null:+v;renderGym()}
+  else if(a==="editRoutine")gOpenRoutine();
+  else if(a==="start"){if(g.active)return;gStart(+v,false)}
+  else if(a==="startFree"){if(g.active)return;gStart(gSel==null?gWD(TK):gSel,true)}
+  else if(a==="tog"){const s=g.active.ex[+b.dataset.e].sets[+b.dataset.s];if(!s.done&&!gNum(s.reps)){const p=gPrevSets(g.active.ex[+b.dataset.e].name)[+b.dataset.s];const guess=p&&gNum(p.reps)?p.reps:"";if(!guess){toast("Escribe las repeticiones de la serie");document.getElementById("gr"+b.dataset.e+"_"+b.dataset.s).focus();return}s.reps=guess}s.done=!s.done;persist();renderGym()}
+  else if(a==="addSet"){const ex=g.active.ex[+v],last=ex.sets[ex.sets.length-1];ex.sets.push({kg:last?last.kg:"",reps:"",done:false});persist();renderGym()}
+  else if(a==="delEx"){const ex=g.active.ex[+v];if(confirm("¿Quitar «"+ex.name+"» de esta sesión?")){g.active.ex.splice(+v,1);persist();renderGym()}}
+  else if(a==="addEx"){const inp=document.getElementById("gNewEx"),n=inp.value.trim();if(!n){inp.focus();return}const prev=gPrevSets(n);const lastEx=gLast(n);const type=lastEx?lastEx.ex.find(x=>x.name.toLowerCase()===n.toLowerCase()).type:"w";g.active.ex.push({name:n,type,target:"",sets:[0,1,2].map(i=>({kg:prev[i]?prev[i].kg:"",reps:"",done:false}))});persist();renderGym()}
+  else if(a==="finish")gFinish();
+  else if(a==="cancel"){if(confirm("¿Descartar la sesión en curso? No se guardará nada.")){g.active=null;persist();renderGym()}}
+  else if(a==="bw"){const n=prompt("Tu peso corporal en kg",String(g.bw).replace(".",","));if(n!=null){const x=gNum(n);if(x>=30&&x<=250){g.bw=Math.round(x*10)/10;persist();renderGym()}else toast("Escribe un peso entre 30 y 250 kg")}}
+  else if(a==="delSess"){const s=g.sessions.find(x=>x.id===v);if(s&&confirm("¿Borrar la sesión «"+s.name+"» del "+gShort(s.date)+"?")){g.sessions=g.sessions.filter(x=>x.id!==v);persist();renderGym();toast("Sesión borrada")}}
+  else if(a==="kind"){gKind=v;renderGym()}
+  else if(a==="just"){g.just=b.checked;persist();renderGym()}
+  else if(a==="addCardio"){const val=gNum(document.getElementById("gVal").value),aux=document.getElementById("gAux").value.trim(),date=document.getElementById("gDate").value||TK;
+    if(val<=0){toast("Escribe "+GKINDS[gKind].f.toLowerCase());document.getElementById("gVal").focus();return}
+    if(date>TK){toast("La fecha no puede ser futura");return}
+    const c={id:gid(),kind:gKind,value:val,date,ts:new Date().toISOString()};if(gKind==="reps")c.ex=aux||"Repeticiones";else if(aux)c.min=gNum(aux);
+    g.cardio.push(c);persist();renderGym();toast("+"+gInt(gCardioPts(c))+" pts guardados")}
+  else if(a==="delCardio"){if(confirm("¿Borrar esta actividad?")){g.cardio=g.cardio.filter(x=>x.id!==v);persist();renderGym()}}
+  else if(a==="createGroup"){const n=document.getElementById("gGName").value.trim(),me=document.getElementById("gMe1").value.trim();if(!n||!me){toast("Escribe el nombre del grupo y el tuyo");return}g.group={name:n,me,friends:{},challenges:[]};persist();renderGym();toast("Grupo creado · copia tu tarjeta y compártela")}
+  else if(a==="joinGroup"){const c=gDec(document.getElementById("gJoinCode").value),me=document.getElementById("gMe2").value.trim();if(!c){toast("Esa tarjeta no es válida");return}if(!me){toast("Escribe tu nombre");return}if(c.n===me){toast("Usa un nombre distinto al de tu amigo");return}g.group={name:c.g,me,friends:{[c.n]:c},challenges:[]};persist();renderGym();toast("Te has unido a "+c.g)}
+  else if(a==="paste"){const inp=document.getElementById("gPaste"),c=gDec(inp.value);if(!c){toast("Esa tarjeta no es válida");return}if(c.n===g.group.me){toast("Esa es tu propia tarjeta");return}const old=g.group.friends[c.n];if(old&&old.t>c.t){toast("Ya tenías una tarjeta más reciente de "+c.n);return}g.group.friends[c.n]=c;persist();renderGym();toast((old?"Actualizado ":"Añadido ")+c.n+(c.g!==g.group.name?" (de «"+c.g+"»)":""))}
+  else if(a==="delFriend"){if(confirm("¿Quitar a "+v+" del grupo?")){delete g.group.friends[v];persist();renderGym()}}
+  else if(a==="metric"){gMetric=v;renderGym()}
+  else if(a==="addChal"){const t=document.getElementById("gChT").value.trim(),m=document.getElementById("gChM").value,tv=gNum(document.getElementById("gChV").value);if(!t||tv<=0){toast("Escribe el reto y un objetivo");return}(g.group.challenges=g.group.challenges||[]).push({id:gid(),title:t,metric:m,target:tv});persist();renderGym()}
+  else if(a==="delChal"){g.group.challenges=g.group.challenges.filter(c=>c.id!==v);persist();renderGym()}
+  else if(a==="copyCard"){const ok=await gCopy(gEnc(gMyCard()));toast(ok?"Tarjeta copiada · pégala en el chat de tu grupo":"Selecciona y copia la tarjeta del panel lateral")}
+  else if(a==="leave"){if(confirm("¿Salir de «"+g.group.name+"»? Se borrarán los amigos y retos guardados.")){g.group=null;persist();renderGym()}}
+});
+vGymEl.addEventListener("input",e=>{const t=e.target,g=gym();
+  if((t.dataset.g==="kg"||t.dataset.g==="reps")&&g.active){g.active.ex[+t.dataset.e].sets[+t.dataset.s][t.dataset.g]=t.value;saveLocal();persist()}
+  else if(t.dataset.g==="notes"&&g.active){g.active.notes=t.value;persist()}
+  else if(t.id==="gVal"){const c={kind:gKind,value:gNum(t.value)};const p=document.getElementById("gPrev");if(p)p.textContent="+"+gInt(gCardioPts(c))+" pts"}
+});
+vGymEl.addEventListener("change",e=>{const t=e.target,g=gym();
+  if(t.dataset.g==="chartEx"){gChartEx=t.value;renderGym()}
+  else if(t.dataset.g==="duel"){g.group.duel=t.value;persist();renderGym()}
+});
+vGymEl.addEventListener("keydown",e=>{if(e.key!=="Enter")return;const id=e.target.id;
+  const map={gNewEx:"addEx",gPaste:"paste",gVal:"addCardio",gChV:"addChal"};if(map[id]){e.preventDefault();const b=vGymEl.querySelector('[data-g="'+map[id]+'"]');if(b)b.click()}});
+setInterval(()=>{const t=document.getElementById("gTimer"),a=state.gym&&state.gym.active;if(t&&a)t.textContent=gClock(Date.now()-a.startedAt)},1000);
 
 (function init(){
   const local=loadLocal();
